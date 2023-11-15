@@ -1,2 +1,0 @@
-This file exists to ensure that committing and pushing is working as intended.
-This line was also added to test committing and pushing.

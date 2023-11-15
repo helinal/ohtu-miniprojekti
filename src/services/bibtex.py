@@ -19,5 +19,5 @@ class Bibtex():
             ret += bibDict(x)
             ret += "\","
 
-    def add(key, value):
+    def add(self, key, value):
         self.bibDict[key] = value

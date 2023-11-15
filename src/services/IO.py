@@ -2,7 +2,7 @@ from bibtex import Bibtex
 from app_logic import AppLogic
 
 class KonsoliIO:
-    def __init__(self, app):
+    def __init__(self):
         self.app = AppLogic()
 
     def add_article(self):
@@ -46,7 +46,7 @@ class UI:
             if option == 1:
                 form = int(input("1: Article, 2: Book:, 3: inproceeding"))
                 if form == 1:
-                    KonsoliIO.add_article()
+                    self.io.add_article()
                 elif form == 2:
                     pass
                 

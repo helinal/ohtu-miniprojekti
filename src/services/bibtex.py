@@ -3,14 +3,14 @@ class Bibtex():
         self.docutype = docutype
         self.citekey = citekey
         self.bibDict = {}
-    def __str__():
+    def __str__(self):
         looped = self.loop_to_string()
         return(
             f"@{docutype}\{{citekey},"
             f"{looped}"
             f"\}"
         )
-    def loop_to_string():
+    def loop_to_string(self):
         ret = ""
         for x in self.bibDict:
             ret += "\n  "

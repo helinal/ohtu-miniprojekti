@@ -6,22 +6,26 @@ class KonsoliIO:
         self.app = AppLogic()
 
     def add_article(self):
-        code = input("Citekey: ")
-        bibtex = Bibtex("article", code)
+            code = input("Citekey: ")
+            bibtex = Bibtex("article", code)
 
-        author = input("Author: ")
-        bibtex.add("author", author)
+            author = input("Author: ")
+            bibtex.add("author", author)
 
-        title = input("Title: ")
-        bibtex.add("title", title)
+            title = input("Title: ")
+            bibtex.add("title", title)
 
-        journal = input("Journal: ")
-        bibtex.add("journal", journal)
+            journal = input("Journal: ")
+            bibtex.add("journal", journal)
 
-        year = input("Year: ")
-        bibtex.add("year", year)
+            try:
+                year = int(input("Year: "))
+                bibtex.add("year", year)
+                
+            except ValueError:
+                print("year needs to be only numbers, try again")
 
-        self.app.add(bibtex)
+            self.app.add(bibtex)
         
     
     def add_book(self):
@@ -30,9 +34,8 @@ class KonsoliIO:
     def add_inproceeding(self):
         pass
 
-    def print(self, teksti):
-        pass
-        #Tästä pääsee Print
+    def print(self):
+        self.app.return_all()
 
 
 class UI:
@@ -41,23 +44,24 @@ class UI:
 
     def start(self):
         while True:
-            option = int(input("Choose 1 to add references or choose 2 to print references: "))
+            try:
+                option = int(input("Choose 1 to add article references or choose 2 to print references or 3 to stop: "))
+            except ValueError:
+                print("invalid input, try again")
+                continue
 
             if option == 1:
-                form = int(input("1: Article, 2: Book:, 3: inproceeding"))
-                if form == 1:
-                    self.io.add_article()
-                elif form == 2:
-                    pass
-                
-                elif form == 3:
-                    pass
-
+                self.io.add_article()
+               
             elif option == 2:
-                print("kaksi")
+                self.io.print()
+            
+            elif option == 3:
+                break
 
             else:
-                print("invalid")
+                print("invalid input, try again")
+                
 
 def main():
     io = KonsoliIO()

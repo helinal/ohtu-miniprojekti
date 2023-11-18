@@ -14,7 +14,11 @@ class Bibtex():
     def loop_to_string(self):
         ret = ""
         for key, value in self.bibDict.items():
-            ret += f",\n    {key} = {value}"
+            not_year = (key != "year")
+            if not_year:
+                ret += f",\n    {key} = \"{value}\""
+            else:
+                ret += f",\n    {key} = \"{value}\""
         if ret == "":
             return ","
         return ret

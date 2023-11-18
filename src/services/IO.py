@@ -35,7 +35,9 @@ class KonsoliIO:
         pass
 
     def print(self):
-        self.app.return_all()
+        all_refs = self.app.return_all()
+        for x in all_refs:
+            print(x)
 
 
 class UI:

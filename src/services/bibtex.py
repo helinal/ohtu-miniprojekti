@@ -18,7 +18,7 @@ class Bibtex():
             if not_year:
                 ret += f",\n    {key} = \"{value}\""
             else:
-                ret += f",\n    {key} = \"{value}\""
+                ret += f",\n    {key} = {value}"
         if ret == "":
             return ","
         return ret

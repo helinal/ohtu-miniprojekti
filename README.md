@@ -1,6 +1,8 @@
 # ohtu-miniprojekti
 
-[Linkki Product Backlogiin ja Sprint backlogeihin välilehdillä](https://docs.google.com/spreadsheets/d/1uLXQf_AoPL6ly2yu5XrqHldBCUcM7QaakHexxE-Yq5s/edit#gid=0)
+[Product and sprint backlog](https://docs.google.com/spreadsheets/d/1uLXQf_AoPL6ly2yu5XrqHldBCUcM7QaakHexxE-Yq5s/edit#gid=0)
+
+[User manual](https://github.com/helinal/ohtu-miniprojekti/blob/main/documentation/user_manual.md)
 
 ### Sprint 0
 

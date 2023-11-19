@@ -6,28 +6,28 @@ class KonsoliIO:
         self.app = AppLogic()
 
     def add_article(self):
-            code = input("Citekey: ")
-            bibtex = Bibtex("article", code)
+        code = input("Citekey: ")
+        bibtex = Bibtex("article", code)
 
-            author = input("Author: ")
-            bibtex.add("author", author)
+        author = input("Author: ")
+        bibtex.add("author", author)
 
-            title = input("Title: ")
-            bibtex.add("title", title)
+        title = input("Title: ")
+        bibtex.add("title", title)
 
-            journal = input("Journal: ")
-            bibtex.add("journal", journal)
+        journal = input("Journal: ")
+        bibtex.add("journal", journal)
 
-            try:
-                year = int(input("Year: "))
-                bibtex.add("year", year)
-                
-            except ValueError:
-                print("year needs to be only numbers, try again")
+        try:
+            year = int(input("Year: "))
+            bibtex.add("year", year)
 
-            self.app.add(bibtex)
-        
-    
+        except ValueError:
+            print("year needs to be only numbers, try again")
+            return
+
+        self.app.add(bibtex)
+
     def add_book(self):
         pass
 
@@ -54,16 +54,16 @@ class UI:
 
             if option == 1:
                 self.io.add_article()
-               
+
             elif option == 2:
                 self.io.print()
-            
+
             elif option == 3:
                 break
 
             else:
                 print("invalid input, try again")
-                
+
 
 def main():
     io = KonsoliIO()
@@ -72,11 +72,3 @@ def main():
     ui.start()
 
 main()
-
-
-        
-
-        
-
-        
-            

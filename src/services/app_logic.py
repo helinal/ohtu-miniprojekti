@@ -2,8 +2,8 @@ class AppLogic():
     def __init__(self):
         self.citations = []
 
-    def add(self, object):
-        self.citations.append(object)
+    def add(self, bibtex_object):
+        self.citations.append(bibtex_object)
 
     def return_all(self):
         return self.citations

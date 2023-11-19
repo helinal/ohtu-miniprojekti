@@ -25,4 +25,3 @@ class Bibtex():
 
     def add(self, key, value):
         self.bibDict[key] = value
-

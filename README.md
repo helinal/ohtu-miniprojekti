@@ -11,8 +11,17 @@
 
 #### Definition of done
 
+The following user stories are completed according to acceptance criteria:
+
+
+##### As a user I can add article references by filling a form in terminal
  - Application asks user if they want to input data.
  - Input form asks user for values required for an article reference.
+
+##### As a user I can print all the references in the terminal in a bibtex form
  - Inputted data is kept as long as the program is open.
  - Application asks user if they want to print all references inputted.
  - References are printed to terminal in BibTeX form.
+
+The completion of user stories is verified through unit testing across non-IO layers of the program.
+In addition, the program is continuosly integrated, with test coverage and passing kept high throughout development.

@@ -47,14 +47,17 @@ class UI:
         journal = self.io.read_input("Journal: ")
         bibtex.add("journal", journal)
 
-        try:
-            year = int(input("Year: "))
-            bibtex.add("year", year)
+        t = True
+        while t:
+            try:
+                year = int(input("Year: "))
+                bibtex.add("year", year)
+                t = False
 
-        except ValueError:
-            self.io.write_screen("year needs to be only numbers, try again")
-            return
-
+            except ValueError:
+                self.io.write_screen("year needs to be only numbers, try again")
+                t = True
+                
         self.app.add(bibtex)
 
     def add_book(self):

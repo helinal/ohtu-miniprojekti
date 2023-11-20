@@ -4,6 +4,9 @@
 
 [User manual](https://github.com/helinal/ohtu-miniprojekti/blob/main/documentation/user_manual.md)
 
+![GHA workflow badge](https://github.com/helinal/ohtu-miniprojekti/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/helinal/ohtu-miniprojekti/graph/badge.svg?token=71GPV9BTFQ)](https://codecov.io/gh/helinal/ohtu-miniprojekti)
+
 ### Sprint 0
 
 #### Definition of done

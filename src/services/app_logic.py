@@ -8,5 +8,5 @@ class AppLogic():
     def return_all(self):
         return self.citations
 
-    def save(self):
-        pass
+#    def save(self):
+#        pass

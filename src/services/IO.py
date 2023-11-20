@@ -2,20 +2,49 @@ from bibtex import Bibtex
 from app_logic import AppLogic
 
 class KonsoliIO:
+    def read_input(self, text):
+        return input(text)
+
+    def write_screen(self, text):
+        print(text)
+
+
+class UI:
     def __init__(self):
+        self.io = KonsoliIO()
         self.app = AppLogic()
 
+    def start(self):
+        while True:
+            try:
+                option = self.io.read_input("Choose 1 to add article references or choose 2 to print references or 3 to stop: ")
+            except ValueError:
+                self.io.write_screen("invalid input, try again")
+                continue
+
+            if option == "1":
+                self.add_article()
+
+            elif option == "2":
+                self.print_all()
+
+            elif option == "3":
+                break
+
+            else:
+                self.io.write_screen("invalid input, try again")
+
     def add_article(self):
-        code = input("Citekey: ")
+        code = self.io.read_input("Citekey: ")
         bibtex = Bibtex("article", code)
 
-        author = input("Author: ")
+        author = self.io.read_input("Author: ")
         bibtex.add("author", author)
 
-        title = input("Title: ")
+        title = self.io.read_input("Title: ")
         bibtex.add("title", title)
 
-        journal = input("Journal: ")
+        journal = self.io.read_input("Journal: ")
         bibtex.add("journal", journal)
 
         try:
@@ -23,7 +52,7 @@ class KonsoliIO:
             bibtex.add("year", year)
 
         except ValueError:
-            print("year needs to be only numbers, try again")
+            self.io.write_screen("year needs to be only numbers, try again")
             return
 
         self.app.add(bibtex)
@@ -34,41 +63,9 @@ class KonsoliIO:
     def add_inproceeding(self):
         pass
 
-    def print(self):
+    def print_all(self):
         all_refs = self.app.return_all()
         for x in all_refs:
-            print(x)
+            self.io.write_screen(x)
 
 
-class UI:
-    def __init__(self, io):
-        self.io = io
-
-    def start(self):
-        while True:
-            try:
-                option = int(input("Choose 1 to add article references or choose 2 to print references or 3 to stop: "))
-            except ValueError:
-                print("invalid input, try again")
-                continue
-
-            if option == 1:
-                self.io.add_article()
-
-            elif option == 2:
-                self.io.print()
-
-            elif option == 3:
-                break
-
-            else:
-                print("invalid input, try again")
-
-
-def main():
-    io = KonsoliIO()
-    ui = UI(io)
-
-    ui.start()
-
-main()

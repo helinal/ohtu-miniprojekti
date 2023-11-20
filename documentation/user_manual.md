@@ -23,7 +23,7 @@ poetry shell
 Start program:
 
 ```bash
-python3 src/services/IO.py
+python3 src/services/index.py
 ```
 
 ## Usage:

@@ -17,7 +17,7 @@ class UI():
                 continue
 
             if option == "1":
-                self.add_article()
+                self.add_reference()
 
             elif option == "2":
                 self.print_all()
@@ -28,34 +28,58 @@ class UI():
             else:
                 self.io.write_screen("invalid input, try again")
 
+    def add_reference(self):
+        while True:
+            try:
+                option = self.io.read_input(
+                    "Choose reference type (article or book):")
+            except ValueError:
+                self.io.write_screen("invalid input, try again")
+                continue
+
+            if option.lower() == "article":
+                self.add_article()
+                break
+
+            elif option == "book":
+                self.add_book()
+                break
+
+            else:
+                self.io.write_screen("invalid input, try again")
+
     def add_article(self):
-        code = self.io.read_input("Citekey: ")
-        bibtex = Bibtex("article", code)
+        attributes = ["author", "title", "journal", "year", "volume", "number", "pages", "month", "note"]
+        self.app.add(self.add_loop(attributes, "article"))
 
-        author = self.io.read_input("Author: ")
-        bibtex.add("author", author)
-
-        title = self.io.read_input("Title: ")
-        bibtex.add("title", title)
-
-        journal = self.io.read_input("Journal: ")
-        bibtex.add("journal", journal)
-
-        try:
-            year = int(input("Year: "))
-            bibtex.add("year", year)
-
-        except ValueError:
-            self.io.write_screen("year needs to be only numbers, try again")
-            return
-
-        self.app.add(bibtex)
-
+    
     def add_book(self):
-        pass
+        attributes = ["author", "editor", "title", "publisher", "year", "volume", "number", "pages", "month", "note"]
+        self.app.add(self.add_loop(attributes, "book"))
 
     def add_inproceeding(self):
         pass
+
+    def add_loop(self, attributes, reftype):
+        code = self.io.read_input("Citekey: ")
+        bibtex = Bibtex(reftype, code)
+
+        for attribute in attributes:
+            if attribute == "year":
+                while True:
+                    try:
+                        year = int(input("Year: "))
+                        bibtex.add("year", year)
+                        break
+
+                    except ValueError:
+                        self.io.write_screen("year needs to be only numbers, try again")
+                        continue
+            else:
+                value = self.io.read_input(f"{attribute}: ")  # Reading input for each attribute
+                bibtex.add(attribute, value)
+
+        return bibtex    
 
     def print_all(self):
         all_refs = self.app.return_all()

@@ -7,7 +7,7 @@ def initialize_database():
 def createtable(connection):
     cursor = connection.cursor()
     cursor.execute("""
-        CREATE TABLE references (citekey, data);
+        CREATE TABLE bibtex (citekey TEXT, data TEXT);
         """)
     connection.commit()
 

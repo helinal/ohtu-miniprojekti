@@ -1,5 +1,4 @@
 import pickle
-import sqlite3
 
 class BibTex_Repository():
     def __init__(self, connection):
@@ -10,7 +9,6 @@ class BibTex_Repository():
         cursor = self._connection.cursor()
 
         pickle_object = pickle.dumps(bibtex_obj)
-        print(pickle_object)
         
         cursor.execute(
             '''INSERT INTO bibtex (citekey, data) values (?,?)''',

@@ -8,6 +8,7 @@ class UI():
     def __init__(self, io):
         self.io = io
         self.app = AppLogic(BibTex_Repository(get_data_base_connection()))
+        self.invalid_message = "Invalid input, try again."
 
     def start(self):
         while True:
@@ -15,7 +16,7 @@ class UI():
                 option = self.io.read_input(
                     "Choose 1 to add article references or choose 2 to print references or 3 to stop: ")
             except ValueError:
-                self.io.write_screen("invalid input, try again")
+                self.io.write_screen(self.invalid_message)
                 continue
 
             if option == "1":
@@ -28,7 +29,7 @@ class UI():
                 break
 
             else:
-                self.io.write_screen("invalid input, try again")
+                self.io.write_screen(self.invalid_message)
 
     def add_reference(self):
         while True:
@@ -36,7 +37,7 @@ class UI():
                 option = self.io.read_input(
                     "Choose reference type (article or book):")
             except ValueError:
-                self.io.write_screen("invalid input, try again")
+                self.io.write_screen(self.invalid_message)
                 continue
 
             if option.lower() == "article":
@@ -48,40 +49,70 @@ class UI():
                 break
 
             else:
-                self.io.write_screen("invalid input, try again")
+                self.io.write_screen(self.invalid_message)
 
     def add_article(self):
-        attributes = ["author", "title", "journal", "year", "volume", "number", "pages", "month", "note"]
-        self.app.add(self.add_loop(attributes, "article"))
+        mand_attributes = ["author", "title", "journal", "year"]
+        opt_attributes = ["volume", "number", "pages", "month", "note"]
+        self.app.add(self.add_loop(mand_attributes, opt_attributes, "article"))
 
     
     def add_book(self):
-        attributes = ["author", "editor", "title", "publisher", "year", "volume", "number", "pages", "month", "note"]
-        self.app.add(self.add_loop(attributes, "book"))
+        mand_attributes = ["author", "editor", "title", "publisher", "year"]
+        opt_attributes = ["volume", "number", "pages", "month", "note"]
+        self.app.add(self.add_loop(mand_attributes, opt_attributes, "book"))
 
     def add_inproceeding(self):
         pass
 
-    def add_loop(self, attributes, reftype):
-        code = self.io.read_input("Citekey: ")
-        bibtex = Bibtex(reftype, code)
+    def add_loop(self, mand_attributes, opt_attributes, reftype):
+        bibtex = self.add_citekey(reftype)
 
-        for attribute in attributes:
+        for attribute in mand_attributes:
             if attribute == "year":
-                while True:
-                    try:
-                        year = int(input("Year: "))
-                        bibtex.add("year", year)
-                        break
-
-                    except ValueError:
-                        self.io.write_screen("year needs to be only numbers, try again")
-                        continue
+                bibtex = self.add_year(bibtex)
             else:
-                value = self.io.read_input(f"{attribute}: ")  # Reading input for each attribute
-                bibtex.add(attribute, value)
+                bibtex = self.add_mandatory(bibtex, attribute)
+
+        for attribute in opt_attributes:
+            bibtex = self.add_optional(bibtex, attribute)
 
         return bibtex    
+    
+    def add_citekey(self, reftype):
+        while True:
+            code = self.io.read_input("Citekey: ")
+            if code.strip():
+                bibtex = Bibtex(reftype, code)
+                return bibtex
+            else:
+                print(self.invalid_message)
+
+    def add_mandatory(self, bibtex, attribute):
+        while True:
+            value = self.io.read_input(f"{attribute} (mandatory): ")
+            if value.strip():
+                bibtex.add(attribute, value)
+                return bibtex
+            else:
+                print(self.invalid_message)
+
+    def add_year(self, bibtex):
+        while True:
+            try:
+                year = int(input("year (mandatory): "))
+                bibtex.add("year", year)
+                return bibtex
+
+            except ValueError:
+                self.io.write_screen("Year needs to be only numbers, try again")
+                continue
+
+    def add_optional(self, bibtex, attribute):
+        value = self.io.read_input(f"{attribute} (optional): ")
+        if value:
+            bibtex.add(attribute, value)
+        return bibtex
 
     def print_all(self):
         all_refs = self.app.return_all()

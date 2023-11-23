@@ -1,5 +1,5 @@
 import unittest
-from bibtex import Bibtex
+from services.bibtex import Bibtex
 
 
 class TestBibtex(unittest.TestCase):

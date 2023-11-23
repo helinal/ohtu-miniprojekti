@@ -1,6 +1,6 @@
 import unittest
-from IO import UI
-from app_logic import AppLogic
+from UI.ui import UI
+from services.app_logic import AppLogic
 
 class StubIO:
     def __init__(self, inputs: list):

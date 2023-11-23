@@ -1,6 +1,6 @@
 import unittest
-from app_logic import AppLogic
-from bibtex import Bibtex
+from services.app_logic import AppLogic
+from services.bibtex import Bibtex
 
 class TestAppLogic(unittest.TestCase):
     def setUp(self):

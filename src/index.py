@@ -1,5 +1,5 @@
-from IO import UI
-from IO import KonsoliIO
+from services.IO import KonsoliIO
+from UI.ui import UI    
 
 def main():
     ui = UI(KonsoliIO())

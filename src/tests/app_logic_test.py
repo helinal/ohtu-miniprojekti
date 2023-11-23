@@ -2,6 +2,7 @@ import unittest
 from services.app_logic import AppLogic
 from services.bibtex import Bibtex
 
+
 class TestAppLogic(unittest.TestCase):
     def setUp(self):
         self.app_logic = AppLogic()
@@ -19,4 +20,3 @@ class TestAppLogic(unittest.TestCase):
     def test_return_all(self):
         self.app_logic.add(self.obj)
         self.assertEqual(self.comparison_list, self.app_logic.return_all())
-        

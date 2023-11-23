@@ -1,6 +1,7 @@
 from services.bibtex import Bibtex
 from services.app_logic import AppLogic
 
+
 class UI():
     def __init__(self, io):
         self.io = io
@@ -9,7 +10,8 @@ class UI():
     def start(self):
         while True:
             try:
-                option = self.io.read_input("Choose 1 to add article references or choose 2 to print references or 3 to stop: ")
+                option = self.io.read_input(
+                    "Choose 1 to add article references or choose 2 to print references or 3 to stop: ")
             except ValueError:
                 self.io.write_screen("invalid input, try again")
                 continue
@@ -25,7 +27,6 @@ class UI():
 
             else:
                 self.io.write_screen("invalid input, try again")
-            
 
     def add_article(self):
         code = self.io.read_input("Citekey: ")

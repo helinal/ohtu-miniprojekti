@@ -24,6 +24,6 @@ class TestUI(unittest.TestCase):
         self.ui = UI(self.stub_io)
         self.ui.start()
 
-        expected_output = ["invalid input, try again"]
+        expected_output = ["Invalid input, try again."]
 
         self.assertEqual(self.stub_io.outputs, expected_output)

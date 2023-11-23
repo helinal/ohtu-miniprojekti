@@ -1,8 +1,11 @@
-*** SETTINGS ***
+*** Settings ***
+Resource  resource.robot
+
 
 *** Test Cases ***
-Login With Incorrect Password
-# ...
+User Can Fill Book References With Right Inputs
+#
 
-Login With Nonexistent Username
-# ...
+User Can Fill Book References With Wrong Inputs
+#
+

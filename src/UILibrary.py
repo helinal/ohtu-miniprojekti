@@ -17,6 +17,5 @@ class UILibrary:
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
 
-
     def run_application(self):
         self.ui.start()

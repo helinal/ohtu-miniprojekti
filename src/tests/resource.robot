@@ -1,6 +1,7 @@
-*** SETTINGS ***
-Library  ../UI/ui.py
-Library  ../Applibrary.py
+*** Settings ***
+Library  ../UILibrary.py
 
-*** KEYWORDS ***
 
+*** Keywords ***
+Start Application
+    Run Application

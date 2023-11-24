@@ -12,4 +12,3 @@ class AppLogic():
 
     def return_all(self):
         return self.citations
-

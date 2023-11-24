@@ -1,9 +1,11 @@
 from database_connection import get_data_base_connection
 
+
 def initialize_database():
     connection = get_data_base_connection()
     drop_tables(connection)
     createtable(connection)
+
 
 def createtable(connection):
     cursor = connection.cursor()
@@ -11,6 +13,7 @@ def createtable(connection):
         CREATE TABLE bibtex (citekey TEXT, data TEXT);
         """)
     connection.commit()
+
 
 def drop_tables(connection):
     cursor = connection.cursor()
@@ -20,6 +23,7 @@ def drop_tables(connection):
     ''')
 
     connection.commit()
+
 
 if __name__ == "__main__":
     initialize_database()

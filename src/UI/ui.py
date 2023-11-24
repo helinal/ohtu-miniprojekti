@@ -56,7 +56,6 @@ class UI():
         opt_attributes = ["volume", "number", "pages", "month", "note"]
         self.app.add(self.add_loop(mand_attributes, opt_attributes, "article"))
 
-    
     def add_book(self):
         mand_attributes = ["author", "editor", "title", "publisher", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
@@ -77,8 +76,8 @@ class UI():
         for attribute in opt_attributes:
             bibtex = self.add_optional(bibtex, attribute)
 
-        return bibtex    
-    
+        return bibtex
+
     def add_citekey(self, reftype):
         while True:
             code = self.io.read_input("Citekey: ")
@@ -105,7 +104,8 @@ class UI():
                 return bibtex
 
             except ValueError:
-                self.io.write_screen("Year needs to be only numbers, try again")
+                self.io.write_screen(
+                    "Year needs to be only numbers, try again")
                 continue
 
     def add_optional(self, bibtex, attribute):

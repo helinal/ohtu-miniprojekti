@@ -48,7 +48,7 @@ invoke start
 
 ### Resetting the database:
 
-- Running `Poetry run invoke build` after already initializing the database will clear it of all of its content
+- Running `poetry run invoke build` after already initializing the database will clear it of all of its content
 
 ### Quit:
 

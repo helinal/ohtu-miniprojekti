@@ -21,6 +21,10 @@ def coverage_report(ctx):
     ctx.run("coverage html", pty=True)
 
 @task
+def coverage_open(ctx):
+    ctx.run("open htmlcov/index.html", pty=True)
+
+@task
 def lint(ctx):
     ctx.run("pylint src", pty=True)
 

@@ -20,29 +20,41 @@ Enter Poetry's virtual environment:
 poetry shell
 ```
 
+Initialize database:
+
+```bash
+invoke build
+```
+
 Start program:
 
 ```bash
-python3 src/services/index.py
+invoke start
 ```
 
 ## Usage:
 
 ### Adding a book:
 
-- In the start menu, press _1_ and _Enter_ to start adding a book
-- After adding the last field, the citation will be saved in BibTeX format
+- In the start menu, press _1_ and _Enter_ to start adding a reference
+  - Type in _article_ or _book_ and press _Enter_
+  - After adding the necessary filelds you can either skip or add a field. If you wish to skip a field, leave it empty and press _Enter_
+- After adding the last field, the citation will be saved in BibTeX format to your local database
 
 ### Retrieving all the citations :
 
 - Press _2_ and _Enter_ in the start menu to print out all the citations you have added
 - The citations will automatically be printed in BibTeX format
 
+### Resetting the database:
+
+- Running `Poetry run invoke build` after already initializing the database will clear it of all of its content
+
 ### Quit:
 
 - Press _3_ in the start menu to exit the program
 
-## Command line actions:
+## Other command line actions:
 
 _Run these commands in the root directory of this project_
 
@@ -51,33 +63,41 @@ _Run these commands in the root directory of this project_
 Unittests:
 
 ```bash
-poetry run pytest src/services/tests/
+poetry run invoke test
+```
+
+Robot:
+
+```bash
+poetry run invoke robot
 ```
 
 Coverage:
 
 ```bash
-poetry run coverage run --branch -m pytest
+poetry run invoke coverage
 ```
 
-After running the command above, see coverage report by running:
+Coverage report:
 
 ```bash
-poetry run coverage report -m
+poetry run invoke coverage-report
 ```
 
-Generate and open coverage html file:
+Open coverage report:
 
 ```bash
-poetry run coverage html
-```
-
-```bash
-open htmlcov/index.html
+poetry run invoke coverage-open
 ```
 
 Lint:
 
 ```bash
-poetry run pylint src
+poetry run invoke lint
+```
+
+Format with autopep8:
+
+```bash
+poetry run invoke format
 ```

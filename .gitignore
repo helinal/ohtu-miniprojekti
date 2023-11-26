@@ -3,3 +3,4 @@ htmlcov
 __pycache__
 .pytest_cache
 db.sqlite
+ohtu-miniprojekti.code-workspace

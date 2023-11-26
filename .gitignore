@@ -3,11 +3,8 @@ htmlcov
 __pycache__
 .pytest_cache
 db.sqlite
-<<<<<<< HEAD
 ohtu-miniprojekti.code-workspace
-=======
 test-database.sqlite
 log.html
 output.xml
 report.html
->>>>>>> 484467d (added stuff to .gitignore)

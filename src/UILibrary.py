@@ -1,6 +1,7 @@
 from stub_io import StubIO
 from UI.ui import UI
 
+
 class UILibrary:
     def __init__(self):
         self.io = StubIO()

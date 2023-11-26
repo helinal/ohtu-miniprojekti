@@ -48,8 +48,7 @@ class UI():
                 self.add_book()
                 break
 
-            else:
-                self.io.write_screen(self.invalid_message)
+            self.io.write_screen(self.invalid_message)
 
     def add_article(self):
         mand_attributes = ["author", "title", "journal", "year"]
@@ -84,8 +83,8 @@ class UI():
             if code.strip():
                 bibtex = Bibtex(reftype, code)
                 return bibtex
-            else:
-                print(self.invalid_message)
+
+            print(self.invalid_message)
 
     def add_mandatory(self, bibtex, attribute):
         while True:
@@ -93,8 +92,8 @@ class UI():
             if value.strip():
                 bibtex.add(attribute, value)
                 return bibtex
-            else:
-                print(self.invalid_message)
+
+            print(self.invalid_message)
 
     def add_year(self, bibtex):
         while True:

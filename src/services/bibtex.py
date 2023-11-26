@@ -16,7 +16,7 @@ class Bibtex():
     def loop_to_string(self):
         ret = ""
         for key, value in self.bibDict.items():
-            not_year = (key != "year")
+            not_year = key != "year"
             if not_year:
                 ret += f",\n    {key} = \"{value}\""
             else:

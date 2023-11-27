@@ -35,7 +35,7 @@ class UI():
         while True:
             try:
                 option = self.io.read_input(
-                    "Choose reference type (article or book):")
+                    "Choose reference type (article or book), type menu to return ro menu:")
             except ValueError:
                 self.io.write_screen(self.invalid_message)
                 continue
@@ -47,6 +47,9 @@ class UI():
             elif option == "book":
                 self.add_book()
                 break
+
+            elif option == "exit":
+                return
 
             self.io.write_screen(self.invalid_message)
 
@@ -84,7 +87,7 @@ class UI():
                 bibtex = Bibtex(reftype, code)
                 return bibtex
 
-            print(self.invalid_message)
+            self.io.write_screen(self.invalid_message)
 
     def add_mandatory(self, bibtex, attribute):
         while True:
@@ -93,18 +96,18 @@ class UI():
                 bibtex.add(attribute, value)
                 return bibtex
 
-            print(self.invalid_message)
+            self.io.write_screen(self.invalid_message)
 
     def add_year(self, bibtex):
         while True:
             try:
-                year = int(input("year (mandatory): "))
+                year = int(self.io.read_input("year (mandatory): "))
                 bibtex.add("year", year)
                 return bibtex
 
             except ValueError:
                 self.io.write_screen(
-                    "Year needs to be only numbers, try again")
+                    "Year needs to be only numbers, try again.")
                 continue
 
     def add_optional(self, bibtex, attribute):

@@ -15,11 +15,13 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
       - name: Install Poetry
         run: pip install poetry
       - name: Install dependencies
         run: poetry install
+      - name: Lint with pylint
+        run: poetry run pylint src
       - name: Run tests
         run: poetry run coverage run --branch -m pytest
       - name: Coverage report

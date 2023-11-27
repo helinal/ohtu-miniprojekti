@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.12 on linux)" generated="20231126 22:09:17.275" rpa="false" schemaversion="4">
+<suite id="s1" name="Tests" source="/home/hennisep/ohtu-miniprojekti/src/tests">
+<suite id="s1-s1" name="Add Reference" source="/home/hennisep/ohtu-miniprojekti/src/tests/add_reference.robot">
+<test id="s1-s1-t1" name="User Can Fill Book References With Right Inputs" line="7">
+<kw name="Start Application" type="SETUP">
+<kw name="Run Application" library="UILibrary">
+<status status="FAIL" starttime="20231126 22:09:17.293" endtime="20231126 22:10:55.313"/>
+</kw>
+<kw name="Input 1 Command">
+<status status="NOT RUN" starttime="20231126 22:10:55.313" endtime="20231126 22:10:55.313"/>
+</kw>
+<status status="FAIL" starttime="20231126 22:09:17.293" endtime="20231126 22:10:55.314"/>
+</kw>
+<status status="FAIL" starttime="20231126 22:09:17.293" endtime="20231126 22:10:55.314">Setup failed:
+Execution terminated by signal</status>
+</test>
+<status status="FAIL" starttime="20231126 22:09:17.286" endtime="20231126 22:10:55.314"/>
+</suite>
+<suite id="s1-s2" name="Database" source="/home/hennisep/ohtu-miniprojekti/src/tests/database.robot">
+<test id="s1-s2-t1" name="User Can Save Article References To Database Succesfully" line="7">
+<tag>robot:exit</tag>
+<status status="FAIL" starttime="20231126 22:10:55.315" endtime="20231126 22:10:55.315">Test execution stopped due to a fatal error.</status>
+</test>
+<test id="s1-s2-t2" name="User Can Save Book References To Database Succesfully" line="12">
+<tag>robot:exit</tag>
+<status status="FAIL" starttime="20231126 22:10:55.315" endtime="20231126 22:10:55.315">Test execution stopped due to a fatal error.</status>
+</test>
+<test id="s1-s2-t3" name="References Are Stored In Database" line="17">
+<tag>robot:exit</tag>
+<status status="FAIL" starttime="20231126 22:10:55.315" endtime="20231126 22:10:55.316">Test execution stopped due to a fatal error.</status>
+</test>
+<status status="FAIL" starttime="20231126 22:10:55.314" endtime="20231126 22:10:55.316"/>
+</suite>
+<status status="FAIL" starttime="20231126 22:09:17.275" endtime="20231126 22:10:55.316"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="4" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0" info="combined" combined="NOT robot:exit">NOT robot:exit</stat>
+</tag>
+<suite>
+<stat pass="0" fail="4" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Add Reference">Tests.Add Reference</stat>
+<stat pass="0" fail="3" skip="0" id="s1-s2" name="Database">Tests.Database</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231126 22:10:55.314" level="ERROR">Error in file '/home/hennisep/ohtu-miniprojekti/src/tests/database.robot' on line 43: Creating keyword 'Get References' failed: User keyword cannot be empty.</msg>
+</errors>
+</robot>

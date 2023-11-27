@@ -11,7 +11,7 @@ class UILibrary:
         self.io.add_input(value)
 
     def output_should_contain(self, value):
-        outputs = self._io.outputs
+        outputs = self.io.outputs
 
         if not value in outputs:
             raise AssertionError(

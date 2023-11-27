@@ -1,11 +1,9 @@
 *** Settings ***
 Library  ../UILibrary.py
-Library  ../DatabaseLibrary.py
+#Library  ../DatabaseLibrary.py
 
 
 *** Keywords ***
-Start Application
-    Run Application
 
 #Connect DB
 #

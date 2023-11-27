@@ -26,4 +26,4 @@
 
 ***Imporvements for next sprint:***
 - More communication to others when doing something new/ modifying something
-- Avoid conflicts on terminal
+- Avoid conflicts when pushing/pulling

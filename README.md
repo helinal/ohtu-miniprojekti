@@ -7,12 +7,37 @@
 ![GHA workflow badge](https://github.com/helinal/ohtu-miniprojekti/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/helinal/ohtu-miniprojekti/graph/badge.svg?token=71GPV9BTFQ)](https://codecov.io/gh/helinal/ohtu-miniprojekti)
 
-### Sprint 0
+
+
+### Sprint 2
 
 #### Definition of done
 
 The following user stories are completed according to acceptance criteria:
 
+##### As a user I can save references on my computer
+ - Inputted data is saved locally.
+ - Program writes and reads into a SQLite database.
+
+##### As a user I can add book references into the system
+ - Application asks user for a reference type for input.
+ - Book references are saved in book type bibtex format.
+
+##### As a user I can add both mandatory and optional fields
+ - Application form has optional fields, which are clearly annotated.
+ - A reference with invalid mandatory fields is not accepted.
+ - Optional fields can be left empty.
+
+The completion of user stories is verified through extensive unit testing across the program, and system testing is begun during this sprint.
+The program is continuosly integrated, with test coverage and passing kept high throughout development.
+
+
+
+### Sprint 1
+
+#### Definition of done
+
+The following user stories are completed according to acceptance criteria:
 
 ##### As a user I can add article references by filling a form in terminal
  - Application asks user if they want to input data.

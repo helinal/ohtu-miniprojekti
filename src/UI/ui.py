@@ -12,12 +12,9 @@ class UI():
 
     def start(self):
         while True:
-            try:
-                option = self.io.read_input(
-                    "Choose 1 to add article references or choose 2 to print references or 3 to stop: ")
-            except ValueError:
-                self.io.write_screen(self.invalid_message)
-                continue
+            
+            option = self.io.read_input(
+                "Choose 1 to add article references or choose 2 to print references or 3 to stop: ")
 
             if option == "1":
                 self.add_reference()
@@ -33,12 +30,8 @@ class UI():
 
     def add_reference(self):
         while True:
-            try:
-                option = self.io.read_input(
-                    "Choose reference type (article or book), type menu to return ro menu:")
-            except ValueError:
-                self.io.write_screen(self.invalid_message)
-                continue
+            option = self.io.read_input(
+                "Choose reference type (article or book), type menu to return ro menu:")
 
             if option.lower() == "article":
                 self.add_article()
@@ -48,10 +41,11 @@ class UI():
                 self.add_book()
                 break
 
-            elif option == "exit":
+            elif option == "menu":
                 return
 
-            self.io.write_screen(self.invalid_message)
+            else:
+                self.io.write_screen(self.invalid_message)
 
     def add_article(self):
         mand_attributes = ["author", "title", "journal", "year"]
@@ -62,9 +56,6 @@ class UI():
         mand_attributes = ["author", "editor", "title", "publisher", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
         self.app.add(self.add_loop(mand_attributes, opt_attributes, "book"))
-
-    def add_inproceeding(self):
-        pass
 
     def add_loop(self, mand_attributes, opt_attributes, reftype):
         bibtex = self.add_citekey(reftype)

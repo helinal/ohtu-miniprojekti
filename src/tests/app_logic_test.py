@@ -4,7 +4,6 @@ from services.app_logic import AppLogic
 from services.bibtex import Bibtex
 
 
-
 class TestAppLogic(unittest.TestCase):
     def setUp(self):
         self.bib_repo = Mock()
@@ -20,7 +19,7 @@ class TestAppLogic(unittest.TestCase):
         value = self.app_logic.return_all()
         comparison_value = self.bib_repo.fetch_all()
         self.assertEqual(value, comparison_value)
-    
+
     def test_add_citation(self):
         self.app_logic.add(self.obj)
         value = self.app_logic.return_all()

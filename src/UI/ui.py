@@ -12,7 +12,7 @@ class UI():
 
     def start(self):
         while True:
-            
+
             option = self.io.read_input(
                 "Choose 1 to add article references or choose 2 to print references or 3 to stop: ")
 
@@ -37,15 +37,14 @@ class UI():
                 self.add_article()
                 break
 
-            elif option == "book":
+            if option == "book":
                 self.add_book()
                 break
 
-            elif option == "menu":
+            if option == "menu":
                 return
 
-            else:
-                self.io.write_screen(self.invalid_message)
+            self.io.write_screen(self.invalid_message)
 
     def add_article(self):
         mand_attributes = ["author", "title", "journal", "year"]

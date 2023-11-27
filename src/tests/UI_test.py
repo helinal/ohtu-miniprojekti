@@ -27,7 +27,6 @@ class TestUI(unittest.TestCase):
         expected_output = ["Invalid input, try again."]
 
         self.assertEqual(self.stub_io.outputs, expected_output)
-    
 
     def test_start_and_insert_break_input(self):
         self.stub_io = StubIO(["3"])
@@ -46,24 +45,26 @@ class TestUI(unittest.TestCase):
         expected_output = ["Invalid input, try again."]
 
         self.assertEqual(self.stub_io.outputs, expected_output)
-    
+
     def test_add_article_with_empty_author_and_print_all(self):
-        self.stub_io = StubIO(["1", "article", "citekey", "", "author", "title", "journal", "2000", "", "", "", "february", "", "2", "3"])
+        self.stub_io = StubIO(["1", "article", "citekey", "", "author",
+                              "title", "journal", "2000", "", "", "", "february", "", "2", "3"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
         print("1st dbtest:")
         print(self.stub_io.outputs)
 
-        expected_output = ["Invalid input, try again.",'@article{citekey,\n    author = "author",\n    title = "title",\n    journal = "journal",\n    year = 2000,\n    month = "february"\n}']
+        expected_output = ["Invalid input, try again.",
+                           '@article{citekey,\n    author = "author",\n    title = "title",\n    journal = "journal",\n    year = 2000,\n    month = "february"\n}']
 
         self.assertEqual(self.stub_io.outputs, expected_output)
 
     def test_add_article_with_empty_citekey_and_print_all(self):
-        self.stub_io = StubIO(["1", "article", "", "cite", "auth", "titl", "jour", "2000", "", "", "", "february", "", "2", "3"])
+        self.stub_io = StubIO(["1", "article", "", "cite", "auth",
+                              "titl", "jour", "2000", "", "", "", "february", "", "2", "3"])
         self.ui = UI(self.stub_io)
         self.ui.start()
-
 
         print("2nd dbtest:")
         print(self.stub_io.outputs)
@@ -75,7 +76,8 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs, expected_output)
 
     def test_add_book_with_bad_year_and_print_all(self):
-        self.stub_io = StubIO(["1", "book", "ckey", "author", "editor", "title", "publisher", "year", "2000", "", "", "", "february", "", "2", "3"])
+        self.stub_io = StubIO(["1", "book", "ckey", "author", "editor", "title",
+                              "publisher", "year", "2000", "", "", "", "february", "", "2", "3"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 

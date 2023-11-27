@@ -6,11 +6,10 @@ class StubIO:
     def write_screen(self, value):
         self.outputs.append(value)
 
-    def read_input(self, prompt):
+    def read_input(self, prompt): # pylint: disable=unused-argument
         if len(self.inputs) > 0:
             return self.inputs.pop(0)
-        else:
-            return ""
+        return ""
 
     def add_input(self, value):
         self.inputs.append(value)

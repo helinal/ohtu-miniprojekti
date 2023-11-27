@@ -1,16 +1,24 @@
 *** Settings ***
 Resource  resource.robot
-Test Setup  Start Application
 
 *** Test Cases ***
 
 User Can Fill Book References With Right Inputs
+    Input 1 Command
     Input Book Command
-    Insert Book Reference Mandatory  1234  henni  moi  ii  moi  1234
-    Insert Book Reference Optional  moi  12  1234  04  jeee
+    Insert Book Reference Mandatory  1234  henni  editor  kirja  julkaisija  1980
+    Insert Book Reference Optional  3  12  1234  04  hyvä
     Input 3 Command
     
-#User Can Fill Book References With Wrong Inputs
+User Can Fill Book References With Wrong Inputs
+    Input 1 Command
+    Input Book Command
+    Insert Book Reference Mandatory  1234  henni  editor  kirja  julkaisija  moi
+    Output Should Contain    Year needs to be only numbers, try again
+    Insert Year  1980
+    Insert Book Reference Optional  3  12  1234  04  hyvä
+    Input 3 Command
+    
 
 
 
@@ -18,8 +26,7 @@ User Can Fill Book References With Right Inputs
 
 Start Application
     Run Application
-    Input 1 Command
-
+   
 Input 1 Command
     Input  "1"
 
@@ -28,6 +35,11 @@ Input 3 Command
 
 Input Book Command
     Input  "book"
+
+Insert Year
+    [Arguments]  ${year}
+    Input    ${year}
+
 
 Insert Book Reference Mandatory
     [Arguments]  ${citekey}  ${author}  ${editor}  ${title}  ${publisher}  ${year}

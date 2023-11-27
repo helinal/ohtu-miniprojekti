@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.12 on linux)" generated="20231126 22:09:17.275" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.10.12 on linux)" generated="20231127 11:03:33.739" rpa="false" schemaversion="4">
 <suite id="s1" name="Tests" source="/home/hennisep/ohtu-miniprojekti/src/tests">
 <suite id="s1-s1" name="Add Reference" source="/home/hennisep/ohtu-miniprojekti/src/tests/add_reference.robot">
 <test id="s1-s1-t1" name="User Can Fill Book References With Right Inputs" line="7">
 <kw name="Start Application" type="SETUP">
 <kw name="Run Application" library="UILibrary">
-<status status="FAIL" starttime="20231126 22:09:17.293" endtime="20231126 22:10:55.313"/>
+<status status="FAIL" starttime="20231127 11:03:33.765" endtime="20231127 11:03:46.208"/>
 </kw>
 <kw name="Input 1 Command">
-<status status="NOT RUN" starttime="20231126 22:10:55.313" endtime="20231126 22:10:55.313"/>
+<status status="NOT RUN" starttime="20231127 11:03:46.209" endtime="20231127 11:03:46.209"/>
 </kw>
-<status status="FAIL" starttime="20231126 22:09:17.293" endtime="20231126 22:10:55.314"/>
+<status status="FAIL" starttime="20231127 11:03:33.765" endtime="20231127 11:03:46.209"/>
 </kw>
-<status status="FAIL" starttime="20231126 22:09:17.293" endtime="20231126 22:10:55.314">Setup failed:
+<status status="FAIL" starttime="20231127 11:03:33.764" endtime="20231127 11:03:46.209">Setup failed:
 Execution terminated by signal</status>
 </test>
-<status status="FAIL" starttime="20231126 22:09:17.286" endtime="20231126 22:10:55.314"/>
+<status status="FAIL" starttime="20231127 11:03:33.754" endtime="20231127 11:03:46.209"/>
 </suite>
 <suite id="s1-s2" name="Database" source="/home/hennisep/ohtu-miniprojekti/src/tests/database.robot">
 <test id="s1-s2-t1" name="User Can Save Article References To Database Succesfully" line="7">
 <tag>robot:exit</tag>
-<status status="FAIL" starttime="20231126 22:10:55.315" endtime="20231126 22:10:55.315">Test execution stopped due to a fatal error.</status>
+<status status="FAIL" starttime="20231127 11:03:46.210" endtime="20231127 11:03:46.211">Test execution stopped due to a fatal error.</status>
 </test>
 <test id="s1-s2-t2" name="User Can Save Book References To Database Succesfully" line="12">
 <tag>robot:exit</tag>
-<status status="FAIL" starttime="20231126 22:10:55.315" endtime="20231126 22:10:55.315">Test execution stopped due to a fatal error.</status>
+<status status="FAIL" starttime="20231127 11:03:46.211" endtime="20231127 11:03:46.211">Test execution stopped due to a fatal error.</status>
 </test>
 <test id="s1-s2-t3" name="References Are Stored In Database" line="17">
 <tag>robot:exit</tag>
-<status status="FAIL" starttime="20231126 22:10:55.315" endtime="20231126 22:10:55.316">Test execution stopped due to a fatal error.</status>
+<status status="FAIL" starttime="20231127 11:03:46.211" endtime="20231127 11:03:46.212">Test execution stopped due to a fatal error.</status>
 </test>
-<status status="FAIL" starttime="20231126 22:10:55.314" endtime="20231126 22:10:55.316"/>
+<status status="FAIL" starttime="20231127 11:03:46.210" endtime="20231127 11:03:46.212"/>
 </suite>
-<status status="FAIL" starttime="20231126 22:09:17.275" endtime="20231126 22:10:55.316"/>
+<status status="FAIL" starttime="20231127 11:03:33.740" endtime="20231127 11:03:46.212"/>
 </suite>
 <statistics>
 <total>
@@ -48,6 +48,6 @@ Execution terminated by signal</status>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20231126 22:10:55.314" level="ERROR">Error in file '/home/hennisep/ohtu-miniprojekti/src/tests/database.robot' on line 43: Creating keyword 'Get References' failed: User keyword cannot be empty.</msg>
+<msg timestamp="20231127 11:03:46.210" level="ERROR">Error in file '/home/hennisep/ohtu-miniprojekti/src/tests/database.robot' on line 43: Creating keyword 'Get References' failed: User keyword cannot be empty.</msg>
 </errors>
 </robot>

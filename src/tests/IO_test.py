@@ -19,7 +19,7 @@ class TestUI(unittest.TestCase):
     def setUp(self):
         pass
 
-    def tester(self):
+    def test_start(self):
         self.stub_io = StubIO(["4", "3"])
         self.ui = UI(self.stub_io)
         self.ui.start()
@@ -27,3 +27,4 @@ class TestUI(unittest.TestCase):
         expected_output = ["Invalid input, try again."]
 
         self.assertEqual(self.stub_io.outputs, expected_output)
+

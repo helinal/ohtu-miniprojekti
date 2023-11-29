@@ -18,5 +18,8 @@ Input Print Command
 Input Save Command
     Input  3
 
-Input Exit Command
+Input DOI Command
     Input  4
+
+Input Stop Command
+    Input  5

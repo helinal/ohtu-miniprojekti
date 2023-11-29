@@ -1,5 +1,4 @@
 import requests
-import json
 import bibtexparser
 
 class Doi_Service:
@@ -9,11 +8,10 @@ class Doi_Service:
 
     def fetch(self, doi):
         url = f"{self.doi_url}/{doi}"
-
         req = requests.get(url, headers=self.headers)
 
         data = None
         if req.status_code == 200:
-            data = json.loads(req.text)
+            data = req.text
 
         return data

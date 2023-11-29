@@ -20,7 +20,7 @@ class TestUI(unittest.TestCase):
         pass
 
     def test_start_and_insert_invalid_input(self):
-        self.stub_io = StubIO(["4", "3"])
+        self.stub_io = StubIO(["5", "4"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
@@ -29,7 +29,7 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs, expected_output)
 
     def test_start_and_insert_break_input(self):
-        self.stub_io = StubIO(["3"])
+        self.stub_io = StubIO(["4"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
@@ -38,7 +38,7 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs, expected_output)
 
     def test_try_to_add_non_supported_docutype(self):
-        self.stub_io = StubIO(["1", "999", "menu", "3"])
+        self.stub_io = StubIO(["1", "999", "menu", "4"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
@@ -48,7 +48,7 @@ class TestUI(unittest.TestCase):
 
     def test_add_article_with_empty_author_and_print_all(self):
         self.stub_io = StubIO(["1", "article", "citekey", "", "author",
-                              "title", "journal", "2000", "", "", "", "february", "", "2", "3"])
+                              "title", "journal", "2000", "", "", "", "february", "", "2", "4"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
@@ -62,7 +62,7 @@ class TestUI(unittest.TestCase):
 
     def test_add_article_with_empty_citekey_and_print_all(self):
         self.stub_io = StubIO(["1", "article", "", "cite", "auth",
-                              "titl", "jour", "2000", "", "", "", "february", "", "2", "3"])
+                              "titl", "jour", "2000", "", "", "", "february", "", "2", "4"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
@@ -77,7 +77,7 @@ class TestUI(unittest.TestCase):
 
     def test_add_book_with_bad_year_and_print_all(self):
         self.stub_io = StubIO(["1", "book", "ckey", "author", "editor", "title",
-                              "publisher", "year", "2000", "", "", "", "february", "", "2", "3"])
+                              "publisher", "year", "2000", "", "", "", "february", "", "2", "4"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 

@@ -4,6 +4,7 @@ from repositories.bibtex_repository import BibTex_Repository
 from database_connection import get_data_base_connection
 
 
+
 class UI():
     def __init__(self, io):
         self.io = io
@@ -17,7 +18,8 @@ class UI():
                 "Choose an action: \n" +
                 "1 to add article references \n" +
                 "2 to print references \n" +
-                "3 to stop \n")
+                "3 to save references to file"
+                "4 to stop \n")
 
             if option == "1":
                 self.add_reference()
@@ -26,6 +28,9 @@ class UI():
                 self.print_all()
 
             elif option == "3":
+                pass
+
+            elif option == "4":
                 break
 
             else:

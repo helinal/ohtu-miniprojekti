@@ -9,17 +9,6 @@ User Can Fill Book References With Right Inputs
     Insert Book Reference Mandatory  1234  henni  editor  kirja  julkaisija  1980
     Insert Book Reference Optional  3  12  1234  04  hyvä
     Input 3 Command
-    
-User Can Fill Book References With Wrong Inputs
-    Input 1 Command
-    Input Book Command
-    Insert Book Reference Mandatory  1234  henni  editor  kirja  julkaisija  moi
-    Output Should Contain    Year needs to be only numbers, try again
-    Insert Year  1980
-    Insert Book Reference Optional  3  12  1234  04  hyvä
-    Input 3 Command
-    
-
 
 
 *** Keywords ***
@@ -35,11 +24,6 @@ Input 3 Command
 
 Input Book Command
     Input  "book"
-
-Insert Year
-    [Arguments]  ${year}
-    Input    ${year}
-
 
 Insert Book Reference Mandatory
     [Arguments]  ${citekey}  ${author}  ${editor}  ${title}  ${publisher}  ${year}

@@ -6,9 +6,11 @@ from services.file_service import File_Saver
 from services.doi_service import Doi_Service
 
 class UI():
-    def __init__(self, io):
+    def __init__(self, io, bib_repo=None):
         self.io = io
-        self.bib_repo = BibTex_Repository(get_data_base_connection())
+        self.bib_repo = bib_repo
+        if not bib_repo:
+            self.bib_repo = BibTex_Repository(get_data_base_connection())
         self.app = AppLogic(self.bib_repo)
         self.file_saver = File_Saver(self.bib_repo)
         self.invalid_message = "Invalid input, try again."
@@ -154,5 +156,4 @@ class UI():
         self.io.print_readable_form(all_refs)
     
     def save_to_file(self):
-        self.file_saver.write()
-
+        self.io.write_screen(self.file_saver.write())

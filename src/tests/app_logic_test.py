@@ -8,7 +8,7 @@ class TestAppLogic(unittest.TestCase):
     def setUp(self):
         self.bib_repo = Mock()
         self.app_logic = AppLogic(self.bib_repo)
-        self.obj = Bibtex("entrytype", "cite")
+        self.obj = Bibtex("entrytype")
         self.comparison_list = [self.obj]
 
     def test_initialize_citations(self):

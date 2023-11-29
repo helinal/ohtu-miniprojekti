@@ -12,6 +12,7 @@ python-dotenv = "^1.0.0"
 invoke = "^2.2.0"
 requests = "^2.31.0"
 pybtex = "^0.24.0"
+bibtexparser = "^1.4.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"

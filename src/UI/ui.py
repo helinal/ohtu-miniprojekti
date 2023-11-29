@@ -3,7 +3,7 @@ from services.app_logic import AppLogic
 from repositories.bibtex_repository import BibTex_Repository
 from database_connection import get_data_base_connection
 from services.file_service import File_Saver
-
+from services.doi_service import Doi_Service
 
 class UI():
     def __init__(self, io):
@@ -12,6 +12,7 @@ class UI():
         self.app = AppLogic(self.bib_repo)
         self.file_saver = File_Saver(self.bib_repo)
         self.invalid_message = "Invalid input, try again."
+        self.doi_service = Doi_Service()
 
     def start(self):
         while True:
@@ -33,6 +34,8 @@ class UI():
                 self.save_to_file()
 
             elif option == "4":
+                self.add_by_doi()
+            elif option == "5":
                 break
 
             else:
@@ -103,6 +106,15 @@ class UI():
             bibtex = self.add_optional(bibtex, attribute)
 
         return bibtex
+
+    def add_by_doi(self):
+        while True:
+            doi = self.io.read_input("Enter DOI:")
+            data = self.doi_service.fetch(doi)
+            print(data)
+            break
+
+        
 
     def create_bibtex_obj(self, reftype):
             bibtex = Bibtex(reftype)

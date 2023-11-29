@@ -1,5 +1,3 @@
-from pybtex.database import parse_string
-
 class KonsoliIO():
     def read_input(self, text):
         return input(text)

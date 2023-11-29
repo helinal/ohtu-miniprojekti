@@ -3,8 +3,6 @@ from services.app_logic import AppLogic
 from repositories.bibtex_repository import BibTex_Repository
 from database_connection import get_data_base_connection
 
-
-
 class UI():
     def __init__(self, io):
         self.io = io
@@ -18,7 +16,7 @@ class UI():
                 "Choose an action: \n" +
                 "1 to add article references \n" +
                 "2 to print references \n" +
-                "3 to save references to file"
+                "3 to save references to file \n" +
                 "4 to stop \n")
 
             if option == "1":
@@ -28,7 +26,7 @@ class UI():
                 self.print_all()
 
             elif option == "3":
-                pass
+                self.save_file()
 
             elif option == "4":
                 break
@@ -39,17 +37,20 @@ class UI():
     def add_reference(self):
         while True:
             option = self.io.read_input(
-                "Choose reference type (article or book) or type menu to return to menu: \n")
+                "Choose reference type: \n" +
+                "1 to add article\n" +
+                "2 to add book\n" +
+                "3 to go back to main menu \n")
 
-            if option.lower() == "article":
+            if option == "1":
                 self.add_article()
                 break
 
-            if option == "book":
+            if option == "2":
                 self.add_book()
                 break
 
-            if option == "menu":
+            if option == "3":
                 return
 
             self.io.write_screen(self.invalid_message)
@@ -118,3 +119,7 @@ class UI():
         all_refs = self.app.return_all()
         for x in all_refs:
             self.io.write_screen(x)
+    
+    def save_file(self):
+        pass
+

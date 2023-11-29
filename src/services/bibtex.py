@@ -10,7 +10,7 @@ class Bibtex():
         return (
             f"@{self.docutype}{{{self.citekey}"
             f"{looped}"
-            f"\n}}number = str(self.citekey_value)"
+            f"\n}}"
         )
 
     def create_citekey(self):

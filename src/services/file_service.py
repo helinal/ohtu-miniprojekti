@@ -11,7 +11,9 @@ class File_Saver:
             
         refs_as_string = '\n'.join(string_list)
         file_path = BIBTEX_FILE_PATH
-        
+
         
         with open(file_path, 'w') as bib_file:
             bib_file.write(refs_as_string)
+
+        return "References saved to file. References can be found in src/data/bibtex.bib"

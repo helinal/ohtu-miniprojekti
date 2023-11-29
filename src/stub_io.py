@@ -7,6 +7,7 @@ class StubIO:
         self.outputs.append(value)
 
     def read_input(self, prompt):  # pylint: disable=unused-argument
+        self.outputs.append(prompt)
         if len(self.inputs) > 0:
             return self.inputs.pop(0)
         return ""

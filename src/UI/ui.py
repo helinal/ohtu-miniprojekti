@@ -17,7 +17,7 @@ class UI():
         while True:
 
             option = self.io.read_input(
-                "Choose an action: \n" +
+                "\nChoose an action: \n" +
                 "1 to add references \n" +
                 "2 to print references \n" +
                 "3 to save references to file \n" +
@@ -41,10 +41,10 @@ class UI():
     def add_reference(self):
         while True:
             option = self.io.read_input(
-                "Choose reference type: \n" +
+                "\nChoose reference type: \n" +
                 "1 to add article\n" +
                 "2 to add book\n" +
-                "3 to add inproceeding\n" +
+                "3 to add inproceedings\n" +
                 "4 to add phdthesis\n" +
                 "5 to go back to main menu \n")
 
@@ -57,7 +57,7 @@ class UI():
                 break
 
             if option == "3":
-                self.add_inproceeding()
+                self.add_inproceedings()
                 break
 
             if option == "4":
@@ -79,11 +79,11 @@ class UI():
         opt_attributes = ["volume", "number", "pages", "month", "note"]
         self.app.add(self.add_loop(mand_attributes, opt_attributes, "book"))
 
-    def add_inproceeding(self):
+    def add_inproceedings(self):
         mand_attributes = ["author", "title"]
         opt_attributes = ["booktitle", "year", "editor", "volume", "number", "series", "pages",
                            "month", "address", "organization", "publisher", "note", "annote"]
-        self.app.add(self.add_loop(mand_attributes, opt_attributes, "inproceeding"))
+        self.app.add(self.add_loop(mand_attributes, opt_attributes, "inproceedings"))
 
     def add_phdthesis(self):
         mand_attributes = ["author", "title", "school", "year"]

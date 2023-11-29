@@ -13,6 +13,7 @@ class KonsoliIO():
             type = i.docutype
 
             #TODO: mandatory fields
+            
             if type == "article":
                 print("\nArticle, citekey:", (i.citekey))
                 print("- Author:", i.bibDict["author"])
@@ -26,4 +27,16 @@ class KonsoliIO():
                 print("- Editor:", i.bibDict["editor"])
                 print("- Title:", i.bibDict["title"])
                 print("- Publisher:",  i.bibDict["publisher"])
+                print("- Year:", i.bibDict["year"])
+
+            if type == "inproceedings":
+                print("\nInproceedings, citekey:", (i.citekey))
+                print("- Author:", i.bibDict["author"])
+                print("- Title:", i.bibDict["title"])
+
+            if type == "phdthesis":
+                print("\nPhdthesis, citekey:", (i.citekey))
+                print("- Author:", i.bibDict["author"])
+                print("- Title:", i.bibDict["title"])
+                print("- School:", i.bibDict["school"])
                 print("- Year:", i.bibDict["year"])

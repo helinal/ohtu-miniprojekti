@@ -10,3 +10,6 @@ except FileNotFoundError:
 
 DATABASE_FILE = os.getenv('DATABASE_FILE') or 'db.sqlite'
 DATABASE_FILE_PATH = os.path.join(dirname, "data", DATABASE_FILE)
+
+BIBTEX_FILE = os.getenv('BIBTEX_FILE') or 'bibtex.bib'
+BIBTEX_FILE_PATH = os.path.join(dirname, 'data', )

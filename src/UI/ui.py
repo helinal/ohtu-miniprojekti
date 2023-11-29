@@ -117,8 +117,7 @@ class UI():
 
     def print_all(self):
         all_refs = self.app.return_all()
-        for x in all_refs:
-            self.io.print_readable_form(x)
+        self.io.print_readable_form(all_refs)
     
     def save_file(self):
         self.file_saver.write()

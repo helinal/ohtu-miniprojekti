@@ -12,6 +12,7 @@ class KonsoliIO():
         for i in text:
             type = i.docutype
 
+            #TODO: mandatory fields
             if type == "article":
                 print("\nArticle, citekey:", (i.citekey))
                 print("- Author:", i.bibDict["author"])

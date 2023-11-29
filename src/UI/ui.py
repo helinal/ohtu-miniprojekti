@@ -44,7 +44,9 @@ class UI():
                 "Choose reference type: \n" +
                 "1 to add article\n" +
                 "2 to add book\n" +
-                "3 to go back to main menu \n")
+                "3 to add inproceeding\n" +
+                "4 to add phdthesis\n" +
+                "5 to go back to main menu \n")
 
             if option == "1":
                 self.add_article()
@@ -55,6 +57,14 @@ class UI():
                 break
 
             if option == "3":
+                self.add_inproceeding()
+                break
+
+            if option == "4":
+                self.add_phdthesis()
+                break
+
+            if option == "5":
                 return
 
             self.io.write_screen(self.invalid_message)
@@ -68,6 +78,17 @@ class UI():
         mand_attributes = ["author", "editor", "title", "publisher", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
         self.app.add(self.add_loop(mand_attributes, opt_attributes, "book"))
+
+    def add_inproceeding(self):
+        mand_attributes = ["author", "title"]
+        opt_attributes = ["booktitle", "year", "editor", "volume", "number", "series", "pages",
+                           "month", "address", "organization", "publisher", "note", "annote"]
+        self.app.add(self.add_loop(mand_attributes, opt_attributes, "inproceeding"))
+
+    def add_phdthesis(self):
+        mand_attributes = ["author", "title", "school", "year"]
+        opt_attributes = ["type", "address", "month", "note", "annote"]
+        self.app.add(self.add_loop(mand_attributes, opt_attributes, "phdthesis"))
 
     def add_loop(self, mand_attributes, opt_attributes, reftype):
         bibtex = self.create_bibtex_obj(reftype)

@@ -30,7 +30,7 @@ class UI():
                 self.print_all()
 
             elif option == "3":
-                self.save_file()
+                self.save_to_file()
 
             elif option == "4":
                 break
@@ -119,6 +119,6 @@ class UI():
         all_refs = self.app.return_all()
         self.io.print_readable_form(all_refs)
     
-    def save_file(self):
+    def save_to_file(self):
         self.file_saver.write()
 

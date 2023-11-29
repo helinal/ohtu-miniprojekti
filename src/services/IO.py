@@ -6,21 +6,23 @@ class KonsoliIO():
         print(text)
 
     def print_readable_form(self,text):
+        if not text:
+            print("\nYou do not have any refences to print!\n")
+
         for i in text:
             type = i.docutype
+
             if type == "article":
-                print("Article", (i.citekey))
+                print("\nArticle, citekey:", (i.citekey))
                 print("- Author:", i.bibDict["author"])
                 print("- Title:", i.bibDict["title"])
                 print("- Journal:", i.bibDict["journal"])
                 print("- Year:", i.bibDict["year"])
-                print(" ")
             
             if type == "book":
-                print("Book", i.citekey)
+                print("\nBook, citekey:", (i.citekey))
                 print("- Author:", i.bibDict["author"])
                 print("- Editor:", i.bibDict["editor"])
                 print("- Title:", i.bibDict["title"])
                 print("- Publisher:",  i.bibDict["publisher"])
                 print("- Year:", i.bibDict["year"])
-                print(" ")

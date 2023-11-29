@@ -14,7 +14,10 @@ class UI():
         while True:
 
             option = self.io.read_input(
-                "Choose 1 to add article references or choose 2 to print references or 3 to stop: ")
+                "Choose an action: \n" +
+                "1 to add article references \n" +
+                "2 to print references \n" +
+                "3 to stop \n")
 
             if option == "1":
                 self.add_reference()
@@ -31,7 +34,7 @@ class UI():
     def add_reference(self):
         while True:
             option = self.io.read_input(
-                "Choose reference type (article or book), type menu to return ro menu:")
+                "Choose reference type (article or book) or type menu to return to menu: \n")
 
             if option.lower() == "article":
                 self.add_article()

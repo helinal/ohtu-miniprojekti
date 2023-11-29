@@ -7,7 +7,9 @@ class File_Saver:
 
     def write(self):
         existing_references = self.bib_repo.fetch_all()
-        refs_as_string = ''.join(existing_references)
+        string_list = [str(obj) for obj in existing_references]
+            
+        refs_as_string = '\n'.join(string_list)
         file_path = BIBTEX_FILE_PATH
         
         

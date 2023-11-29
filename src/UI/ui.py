@@ -2,11 +2,15 @@ from services.bibtex import Bibtex
 from services.app_logic import AppLogic
 from repositories.bibtex_repository import BibTex_Repository
 from database_connection import get_data_base_connection
+from services.file_service import File_Saver
+
 
 class UI():
     def __init__(self, io):
         self.io = io
-        self.app = AppLogic(BibTex_Repository(get_data_base_connection()))
+        self.bib_repo = BibTex_Repository(get_data_base_connection())
+        self.app = AppLogic(self.bib_repo)
+        self.file_saver = File_Saver(self.bib_repo)
         self.invalid_message = "Invalid input, try again."
 
     def start(self):
@@ -117,5 +121,5 @@ class UI():
             self.io.write_screen(x)
     
     def save_file(self):
-        pass
+        self.file_saver.write()
 

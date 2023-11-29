@@ -1,7 +1,7 @@
 class Bibtex():
-    def __init__(self, docutype, citekey):
+    def __init__(self, docutype):
         self.docutype = docutype
-        self.citekey = citekey
+        self.citekey = None
         self.bibDict = {
         }
 

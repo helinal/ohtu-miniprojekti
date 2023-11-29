@@ -66,7 +66,7 @@ class UI():
         self.app.add(self.add_loop(mand_attributes, opt_attributes, "book"))
 
     def add_loop(self, mand_attributes, opt_attributes, reftype):
-        bibtex = self.add_citekey(reftype)
+        bibtex = self.create_bibtex_obj(reftype)
 
         for attribute in mand_attributes:
             if attribute == "year":
@@ -79,14 +79,10 @@ class UI():
 
         return bibtex
 
-    def add_citekey(self, reftype):
-        while True:
-            code = self.io.read_input("Citekey: ")
-            if code.strip():
-                bibtex = Bibtex(reftype, code)
-                return bibtex
+    def create_bibtex_obj(self, reftype):
+            bibtex = Bibtex(reftype)
+            return bibtex
 
-            self.io.write_screen(self.invalid_message)
 
     def add_mandatory(self, bibtex, attribute):
         while True:

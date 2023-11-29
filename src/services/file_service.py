@@ -13,8 +13,3 @@ class File_Saver:
         
         with open(file_path, 'w') as bib_file:
             bib_file.write(refs_as_string)
-
-
-if __name__ == '__main__':
-    filu = File_Saver()
-    filu.write()

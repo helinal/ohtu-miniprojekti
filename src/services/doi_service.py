@@ -12,6 +12,6 @@ class Doi_Service:
 
         data = None
         if req.status_code == 200:
-            data = req.text
+            data = bibtexparser.loads(req.text)
 
         return data

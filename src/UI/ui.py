@@ -111,11 +111,25 @@ class UI():
         return bibtex
 
     def add_by_doi(self):
-        while True:
-            doi = self.io.read_input("Enter DOI:")
-            data = self.doi_service.fetch(doi)
-            print(data)
-            break
+
+        doi = self.io.read_input("Enter DOI:")
+        data = self.doi_service.fetch(doi)
+        entry_type = data.entries[0]["ENTRYTYPE"]
+        entry_author = data.entries[0]["author"]
+        entry_title = data.entries[0]["title"]
+        entry_year = data.entries[0]["year"]
+
+        bibtex = Bibtex(entry_type)
+        bibtex.add("author", entry_author)
+        bibtex.add("title", entry_title)
+        bibtex.add("year", entry_year)
+        for entry in data.entries:
+            for key, value in entry.items():
+                if key in ("ENTRYRYPE", "author", "title", "year"):
+                    continue
+                bibtex.add(key, value)
+        
+        self.app.add(bibtex)
 
         
 

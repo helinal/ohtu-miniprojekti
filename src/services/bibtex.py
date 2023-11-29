@@ -10,8 +10,14 @@ class Bibtex():
         return (
             f"@{self.docutype}{{{self.citekey}"
             f"{looped}"
-            f"\n}}"
+            f"\n}}number = str(self.citekey_value)"
         )
+
+    def create_citekey(self):
+        author = self.bibDict["author"]
+        year = self.bibDict["year"]
+        self.citekey = str(author) + str(year)
+        
 
     def loop_to_string(self):
         ret = ""
@@ -23,6 +29,7 @@ class Bibtex():
                 ret += f",\n    {key} = {value}"
         if ret == "":
             return ","
+        self.create_citekey()
         return ret
 
     def add(self, key, value):

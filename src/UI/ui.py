@@ -22,7 +22,8 @@ class UI():
                 "1 to add references \n" +
                 "2 to print references \n" +
                 "3 to save references to file \n" +
-                "4 to stop \n")
+                "4 to add by DOI \n" +
+                "5 to stop\n")
 
             if option == "1":
                 self.add_reference()

@@ -18,7 +18,7 @@ class UI():
 
             option = self.io.read_input(
                 "Choose an action: \n" +
-                "1 to add article references \n" +
+                "1 to add references \n" +
                 "2 to print references \n" +
                 "3 to save references to file \n" +
                 "4 to stop \n")

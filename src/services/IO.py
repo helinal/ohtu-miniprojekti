@@ -11,8 +11,9 @@ class KonsoliIO():
 
         for i in text:
             type = i.docutype
+            citekey = i.citekey
 
-            print(f"\nType: {type}, Citekey: {i.citekey}\n")
+            print(f"\nType: {type}, Citekey: {citekey}\n")
             for key, value in i.bibDict.items():
                 print(f"{key:10} {value}")
 

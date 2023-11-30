@@ -114,6 +114,9 @@ class UI():
 
         doi = self.io.read_input("Enter DOI:")
         data = self.doi_service.fetch(doi)
+        if not data:
+            self.io.write_screen("\nInvalid DOI, please try again")
+            return
         entry_type = data.entries[0]["ENTRYTYPE"]
         entry_author = data.entries[0]["author"]
         entry_title = data.entries[0]["title"]
@@ -125,7 +128,7 @@ class UI():
         bibtex.add("year", entry_year)
         for entry in data.entries:
             for key, value in entry.items():
-                if key in ("ENTRYRYPE", "author", "title", "year"):
+                if key in ("ENTRYTYPE", "author", "title", "year"):
                     continue
                 bibtex.add(key, value)
         

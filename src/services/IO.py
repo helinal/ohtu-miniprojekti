@@ -12,31 +12,9 @@ class KonsoliIO():
         for i in text:
             type = i.docutype
 
-            #TODO: mandatory fields
-            
-            if type == "article":
-                print("\nArticle, citekey:", (i.citekey))
-                print("- Author:", i.bibDict["author"])
-                print("- Title:", i.bibDict["title"])
-                print("- Journal:", i.bibDict["journal"])
-                print("- Year:", i.bibDict["year"])
-            
-            if type == "book":
-                print("\nBook, citekey:", (i.citekey))
-                print("- Author:", i.bibDict["author"])
-                print("- Editor:", i.bibDict["editor"])
-                print("- Title:", i.bibDict["title"])
-                print("- Publisher:",  i.bibDict["publisher"])
-                print("- Year:", i.bibDict["year"])
+            print(f"\nType: {type}, Citekey: {i.citekey}\n")
+            for key, value in i.bibDict.items():
+                print(f"{key:10} {value}")
 
-            if type == "inproceedings":
-                print("\nInproceedings, citekey:", (i.citekey))
-                print("- Author:", i.bibDict["author"])
-                print("- Title:", i.bibDict["title"])
 
-            if type == "phdthesis":
-                print("\nPhdthesis, citekey:", (i.citekey))
-                print("- Author:", i.bibDict["author"])
-                print("- Title:", i.bibDict["title"])
-                print("- School:", i.bibDict["school"])
-                print("- Year:", i.bibDict["year"])
+             

@@ -4,6 +4,7 @@ ignore=tests
 
 [MESSAGE CONTROL]
 
+
 disable=raw-checker-failed,
         bad-inline-option,
         locally-disabled,
@@ -15,7 +16,8 @@ disable=raw-checker-failed,
         missing-module-docstring,
         missing-function-docstring,
         missing-class-docstring,
-        invalid-name
+        invalid-name,
+        too-few-public-methods
 
 [FORMAT]
 

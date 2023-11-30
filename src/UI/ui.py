@@ -1,9 +1,10 @@
 from services.bibtex import Bibtex
 from services.app_logic import AppLogic
-from repositories.bibtex_repository import BibTex_Repository
-from database_connection import get_data_base_connection
 from services.file_service import File_Saver
 from services.doi_service import Doi_Service
+from repositories.bibtex_repository import BibTex_Repository
+from database_connection import get_data_base_connection
+
 
 class UI():
     def __init__(self, io, bib_repo=None):
@@ -88,13 +89,15 @@ class UI():
     def add_inproceedings(self):
         mand_attributes = ["author", "title"]
         opt_attributes = ["booktitle", "year", "editor", "volume", "number", "series", "pages",
-                           "month", "address", "organization", "publisher", "note", "annote"]
-        self.app.add(self.add_loop(mand_attributes, opt_attributes, "inproceedings"))
+                          "month", "address", "organization", "publisher", "note", "annote"]
+        self.app.add(self.add_loop(mand_attributes,
+                     opt_attributes, "inproceedings"))
 
     def add_phdthesis(self):
         mand_attributes = ["author", "title", "school", "year"]
         opt_attributes = ["type", "address", "month", "note", "annote"]
-        self.app.add(self.add_loop(mand_attributes, opt_attributes, "phdthesis"))
+        self.app.add(self.add_loop(mand_attributes,
+                     opt_attributes, "phdthesis"))
 
     def add_loop(self, mand_attributes, opt_attributes, reftype):
         bibtex = self.create_bibtex_obj(reftype)
@@ -131,15 +134,12 @@ class UI():
                 if key in ("ENTRYTYPE", "author", "title", "year"):
                     continue
                 bibtex.add(key, value)
-        
+
         self.app.add(bibtex)
 
-        
-
     def create_bibtex_obj(self, reftype):
-            bibtex = Bibtex(reftype)
-            return bibtex
-
+        bibtex = Bibtex(reftype)
+        return bibtex
 
     def add_mandatory(self, bibtex, attribute):
         while True:
@@ -171,6 +171,6 @@ class UI():
     def print_all(self):
         all_refs = self.app.return_all()
         self.io.print_readable_form(all_refs)
-    
+
     def save_to_file(self):
         self.io.write_screen(self.file_saver.write())

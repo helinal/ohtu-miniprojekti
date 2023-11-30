@@ -1,6 +1,8 @@
 import unittest
 from unittest.mock import Mock, patch
-from services.file_service import File_Saver  # replace with the actual module name
+# replace with the actual module name
+from services.file_service import File_Saver
+
 
 class TestFileSaver(unittest.TestCase):
     def setUp(self):
@@ -16,4 +18,5 @@ class TestFileSaver(unittest.TestCase):
 
         mock_file_handle = mock_open()
         self.mock_bib_repo.fetch_all.assert_called_once()
-        mock_file_handle.write.assert_called_once_with('\n'.join(str(obj) for obj in mock_objects))
+        mock_file_handle.write.assert_called_once_with(
+            '\n'.join(str(obj) for obj in mock_objects))

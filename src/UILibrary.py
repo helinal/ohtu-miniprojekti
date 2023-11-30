@@ -1,6 +1,6 @@
+import os
 from stub_io import StubIO
 from UI.ui import UI
-import os
 
 
 class UILibrary:
@@ -43,7 +43,6 @@ class UILibrary:
             raise AssertionError(
                 f"File \"{target_directory}/{file_name}\" does not exist."
             )
-
 
     def run_application(self):
         self.ui.start()

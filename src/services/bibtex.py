@@ -22,7 +22,6 @@ class Bibtex():
         for entry in bibtex_obj.entries:
             for key, value in entry.items():
                 self.bibDict[key] = value
-        
 
     def loop_to_string(self):
         ret = ""

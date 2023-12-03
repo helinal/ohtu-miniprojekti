@@ -1,6 +1,7 @@
 import requests
 import bibtexparser
 
+
 class Doi_Service:
     def __init__(self):
         self.doi_url = 'https://dx.doi.org/'

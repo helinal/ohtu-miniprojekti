@@ -136,6 +136,7 @@ class UI():
                 bibtex.add(key, value)
 
         self.app.add(bibtex)
+        self.io.write_screen("\nReference added successfully!")
 
     def create_bibtex_obj(self, reftype):
         bibtex = Bibtex(reftype)

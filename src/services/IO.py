@@ -7,7 +7,7 @@ class KonsoliIO():
 
     def print_readable_form(self, text):
         if not text:
-            print("\nYou do not have any refences to print!\n")
+            print("\nYou do not have any references to print!\n")
 
         for i in text:
             doc_type = i.docutype

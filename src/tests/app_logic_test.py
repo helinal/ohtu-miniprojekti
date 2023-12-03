@@ -9,6 +9,10 @@ class TestAppLogic(unittest.TestCase):
         self.bib_repo = Mock()
         self.app_logic = AppLogic(self.bib_repo)
         self.obj = Bibtex("entrytype")
+        self.obj.bibDict = {
+            "author": "kalle",
+            "year": "2023"
+        }
         self.comparison_list = [self.obj]
 
     def test_initialize_citations(self):

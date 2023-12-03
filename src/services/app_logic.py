@@ -7,6 +7,7 @@ class AppLogic():
         return self.bib_repo.fetch_all()
 
     def add(self, bibtex_object):
+        bibtex_object.create_citekey()
         self.bib_repo.save(bibtex_object)
         self.citations = self.initialize_citations()
 

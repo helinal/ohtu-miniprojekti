@@ -44,5 +44,10 @@ class UILibrary:
                 f"File \"{target_directory}/{file_name}\" does not exist."
             )
 
+    def input_nothing_for_a_number_of_times(self, times):
+        times = int(times)
+        for i in range(times):
+            self.io.add_input("")
+
     def run_application(self):
         self.ui.start()

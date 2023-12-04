@@ -22,8 +22,29 @@
 ***Less Of***
 - Worrying about undone things as we can move them to next sprint
   
-
-
 ***Imporvements for next sprint:***
 - More communication to others when doing something new/ modifying something
 - Avoid conflicts when pushing/pulling
+
+
+#### 2. Retrospektive 4.12.2023
+
+***Start***
+- Worrying about the upcoming presentation
+
+***Stop***
+- Worrying about the upcoming presentation
+
+***Continue***
+- Pulling before pushing
+
+***More Of***
+- Focusing more on CI status
+- Working together on campus
+
+***Less Of***
+- Working overtime
+
+***Imporvements for next sprint:***
+- More focus on CI
+- Try not to save all the work until last minute

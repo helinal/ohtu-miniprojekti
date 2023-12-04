@@ -1,4 +1,3 @@
-from rich import print # pylint: disable=redefined-builtin
 from services.bibtex import Bibtex
 from services.app_logic import AppLogic
 from services.file_service import File_Saver
@@ -15,18 +14,19 @@ class UI():
             self.bib_repo = BibTex_Repository(get_data_base_connection())
         self.app = AppLogic(self.bib_repo)
         self.file_saver = File_Saver(self.bib_repo)
-        self.invalid_message = "[red]\nInvalid input, please try again.[/red]"
+        self.invalid_message = "Invalid input, try again."
         self.doi_service = Doi_Service()
 
     def start(self):
         while True:
-            print("[bright_blue][b]\nChoose an action[/b][/bright_blue]\n" +
-                  "1 to add references \n" +
-                  "2 to print references \n" +
-                  "3 to save references to file \n" +
-                  "4 to add by DOI \n" +
-                  "5 to stop")
-            option = input()
+
+            option = self.io.read_input(
+                "\nChoose an action: \n" +
+                "1 to add references \n" +
+                "2 to print references \n" +
+                "3 to save references to file \n" +
+                "4 to add by DOI \n" +
+                "5 to stop\n")
 
             if option == "1":
                 self.add_reference()
@@ -39,7 +39,6 @@ class UI():
 
             elif option == "4":
                 self.add_by_doi()
-
             elif option == "5":
                 break
 
@@ -48,31 +47,34 @@ class UI():
 
     def add_reference(self):
         while True:
-            print("[bright_blue][b]\nChoose the reference type[/b][/bright_blue]\n" +
-                  "1 to add article\n" +
-                  "2 to add book\n" +
-                  "3 to add inproceedings\n" +
-                  "4 to add phdthesis\n" +
-                  "5 to go back to main menu")
-            option = input()
+            option = self.io.read_input(
+                "\nChoose reference type: \n" +
+                "1 to add article\n" +
+                "2 to add book\n" +
+                "3 to add inproceedings\n" +
+                "4 to add phdthesis\n" +
+                "5 to go back to main menu \n")
 
             if option == "1":
                 self.add_article()
+                break
 
-            elif option == "2":
+            if option == "2":
                 self.add_book()
+                break
 
-            elif option == "3":
+            if option == "3":
                 self.add_inproceedings()
+                break
 
-            elif option == "4":
+            if option == "4":
                 self.add_phdthesis()
+                break
 
-            elif option == "5":
+            if option == "5":
                 return
 
-            else:
-                self.io.write_screen(self.invalid_message)
+            self.io.write_screen(self.invalid_message)
 
     def add_article(self):
         mand_attributes = ["author", "title", "journal", "year"]
@@ -119,7 +121,7 @@ class UI():
         doi = self.io.read_input("Enter DOI:")
         data = self.doi_service.fetch(doi)
         if not data:
-            self.io.write_screen("[red]\nInvalid DOI, please try again[/red]")
+            self.io.write_screen("\nInvalid DOI, please try again")
             return
         entry_type = data.entries[0]["ENTRYTYPE"]
         entry_author = data.entries[0]["author"]
@@ -137,7 +139,7 @@ class UI():
                 bibtex.add(key, value)
 
         self.app.add(bibtex)
-        self.io.write_screen("[green]\nReference added successfully![/green]")
+        self.io.write_screen("\nReference added successfully!")
 
     def create_bibtex_obj(self, reftype):
         bibtex = Bibtex(reftype)
@@ -161,7 +163,7 @@ class UI():
 
             except ValueError:
                 self.io.write_screen(
-                    "[red]\nYear needs to be only numbers, try again.\n[/red]")
+                    "Year needs to be only numbers, try again.")
                 continue
 
     def add_optional(self, bibtex, attribute):

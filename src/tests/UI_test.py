@@ -13,10 +13,9 @@ class StubIO:
 
     def write_screen(self, text):
         self.outputs.append(text.__str__())
-
+    
     def print_readable_form(self, text):
         self.outputs.append('reference')
-
 
 class TestUI(unittest.TestCase):
     def setUp(self):
@@ -41,7 +40,7 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs, expected_output)
 
     def test_try_to_add_non_supported_docutype(self):
-        self.stub_io = StubIO(["1", "999", "5", "5"])
+        self.stub_io = StubIO(["1", "999","5","5"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
@@ -50,8 +49,7 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs, expected_output)
 
     def test_add_article_with_empty_author_and_print_all(self):
-        self.stub_io = StubIO(
-            ["1", "1", "", "asd", "asd", "asd", '123', "", "", "", "", "", "2", "5"])
+        self.stub_io = StubIO(["1", "1","","asd","asd","asd",'123',"","","","","","2","5"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
@@ -77,15 +75,15 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs[0], expected_output)
 
     def test_add_reference_with_doi(self):
-        self.stub_io = StubIO(["4", "10.1007/s11192-014-1506-1", "5"])
+        self.stub_io = StubIO(["4","10.1007/s11192-014-1506-1","5"])
         self.ui = UI(self.stub_io)
         self.ui.start()
         expected_output = "\nReference added successfully!"
         print(self.stub_io.outputs)
         self.assertEqual(expected_output, self.stub_io.outputs[0])
-
+    
     def test_add_reference_incorrect_doi(self):
-        self.stub_io = StubIO(["4", "asdsad", "5"])
+        self.stub_io = StubIO(["4","asdsad","5"])
         self.ui = UI(self.stub_io)
         self.ui.start()
         expected_output = "\nInvalid DOI, please try again"

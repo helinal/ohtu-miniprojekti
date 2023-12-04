@@ -4,8 +4,6 @@ Library  ../UILibrary.py
 
 *** Keywords ***
 
-** Keywords ***
-
 Start Application
     Run Application
    

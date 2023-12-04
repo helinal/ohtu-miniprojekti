@@ -20,6 +20,16 @@ class UILibrary:
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
 
+    def output_should_not_contain_as_substring(self, value):
+        outputs = self.io.outputs
+        print(outputs)
+
+        for member in outputs:
+            if value in member:
+                raise AssertionError(
+                    f"Output \"{value}\" is not in {str(outputs)}"
+                )
+
     def output_should_contain_as_substring(self, value):
         outputs = self.io.outputs
         print(outputs)

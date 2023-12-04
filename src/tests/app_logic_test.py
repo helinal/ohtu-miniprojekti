@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import Mock, ANY, patch
+from unittest.mock import Mock
 from services.app_logic import AppLogic
 from services.bibtex import Bibtex
 

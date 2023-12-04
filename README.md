@@ -8,6 +8,31 @@
 [![codecov](https://codecov.io/gh/helinal/ohtu-miniprojekti/graph/badge.svg?token=71GPV9BTFQ)](https://codecov.io/gh/helinal/ohtu-miniprojekti)
 
 
+### Sprint 3
+
+#### Definition of done
+
+The following user stories are completed according to acceptance criteria:
+
+##### As a user I can print references to a file
+ - Application asks user if they want to put all references into a file.
+ - All data goes from db to a .bib file
+
+##### As a user I can list references in readable form
+ - Printing to terminal prints in a human readable form, rather than BibTeX.
+
+##### As a user I can add a new reference based on doi
+ - Application has an option for inputting a doi references.
+ - Application fetches a reference by doi and saves it to the database.
+
+##### As a user I can add inproceedings and phdthesis references in the system
+ - Inproceedings references are saved in inproceedings form.
+ - Phdthesis references are save in phdthesis form.
+
+
+The completion of user stories is verified through extensive unit testing across the program, and by system testing each added story according to acceptance criteria.
+The program is continuosly integrated. Program releases contain a high unit testing coverage with fully passing unit and system tests.
+
 
 ### Sprint 2
 

@@ -109,7 +109,10 @@ class UI():
                 bibtex = self.add_mandatory(bibtex, attribute)
 
         for attribute in opt_attributes:
-            bibtex = self.add_optional(bibtex, attribute)
+            if attribute == "year":
+                bibtex = self.add_year(bibtex)
+            else:
+                bibtex = self.add_optional(bibtex, attribute)
 
         return bibtex
 

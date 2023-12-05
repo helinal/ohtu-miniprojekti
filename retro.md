@@ -2,7 +2,7 @@
 
 
 
-#### 1. Retrospektive 27.11.2023
+### 1. Retrospective 27.11.2023
 
 
 ***Start***
@@ -22,12 +22,12 @@
 ***Less Of***
 - Worrying about undone things as we can move them to next sprint
   
-***Imporvements for next sprint:***
+***Improvements for next sprint:***
 - More communication to others when doing something new/ modifying something
 - Avoid conflicts when pushing/pulling
 
 
-#### 2. Retrospektive 4.12.2023
+#### 2. Retrospective 4.12.2023
 
 ***Start***
 - Worrying about the upcoming presentation
@@ -45,6 +45,6 @@
 ***Less Of***
 - Working overtime
 
-***Imporvements for next sprint:***
+***Improvements for next sprint:***
 - More focus on CI
 - Try not to save all the work until last minute

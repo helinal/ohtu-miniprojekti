@@ -26,7 +26,7 @@ class UI():
                 "2 to print references \n" +
                 "3 to save references to file \n" +
                 "4 to add by DOI \n" +
-                "5 to stop\n")
+                "5 to stop\n>>> ")
 
             if option == "1":
                 self.add_reference()
@@ -53,7 +53,7 @@ class UI():
                 "2 to add book\n" +
                 "3 to add inproceedings\n" +
                 "4 to add phdthesis\n" +
-                "5 to go back to main menu \n")
+                "5 to go back to main menu \n>>> ")
 
             if option == "1":
                 self.add_article()

@@ -1,9 +1,9 @@
-from services.IO import KonsoliIO
+from services.IO import ConsoleIO
 from UI.ui import UI
 
 
 def main():
-    ui = UI(KonsoliIO())
+    ui = UI(ConsoleIO())
     ui.start()
 
 

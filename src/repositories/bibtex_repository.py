@@ -33,10 +33,10 @@ class BibTex_Repository():
 
         self._connection.commit()
         # return status ongoing
-    
+
     def find_reference(self, citekey):
         cursor = self._connection.cursor()
-    
+        
         cursor.execute(
              """SELECT * FROM bibtex WHERE citekey=?""",
              (citekey,)

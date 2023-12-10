@@ -1,4 +1,6 @@
 import unittest
+from unittest.mock import patch, Mock
+import requests
 from services.doi_service import Doi_Service
 
 
@@ -17,3 +19,10 @@ class TestDoiService(unittest.TestCase):
         doi = 'moi'
         data = self.doi_service.fetch(doi)
         self.assertIsNone(data)
+
+    @patch('requests.get')
+    def test_fetch_timeout(self, mock_get):
+        mock_get.side_effect = requests.Timeout
+        result = self.doi_service.fetch('10100010/ha')
+        self.assertIsNone(result)
+        mock_get.assert_called_once_with('https://dx.doi.org//10100010/ha', headers={"accept": "application/x-bibtex"}, timeout=10)

@@ -17,6 +17,21 @@ class BibTex_Repository():
 
         self._connection.commit()
 
+    def delete_object(self, citekey):
+        cursor = self._connection.cursor()
+        status = ""
+        try:
+            cursor.execute(
+                """DELETE FROM bibtex WHERE citekey=?""",
+                (citekey,)
+            )
+            status = True
+        except Exception as e:
+            status = False
+        
+        self._connection.commit()
+        # return status ongoing
+
     def fetch_all(self):
         cursor = self._connection.cursor()
 

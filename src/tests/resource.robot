@@ -20,4 +20,4 @@ Input DOI Command
     Input  4
 
 Input Stop Command
-    Input  5
+    Input  6

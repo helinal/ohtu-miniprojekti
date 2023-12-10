@@ -26,7 +26,8 @@ class UI():
                 "2 to print references \n" +
                 "3 to save references to file \n" +
                 "4 to add by DOI \n" +
-                "5 to stop\n>>> ")
+                "5 to delete a reference \n" +
+                "6 to stop\n>>> ")
 
             if option == "1":
                 self.add_reference()
@@ -39,11 +40,18 @@ class UI():
 
             elif option == "4":
                 self.add_by_doi()
-            elif option == "5":
-                break
 
+            elif option == "5":
+                self.delete_reference()
+
+            elif option == "6":
+                break
             else:
                 self.io.write_screen(self.invalid_message)
+
+    def delete_reference(self):
+        citekey = self.io.read_input("Enter the citekey of the reference you want to delete: ")
+        self.app.delete_reference(citekey)
 
     def add_reference(self):
         while True:
@@ -79,24 +87,24 @@ class UI():
     def add_article(self):
         mand_attributes = ["author", "title", "journal", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
-        self.app.add(self.add_loop(mand_attributes, opt_attributes, "article"))
+        self.app.add_reference(self.add_loop(mand_attributes, opt_attributes, "article"))
 
     def add_book(self):
         mand_attributes = ["author", "editor", "title", "publisher", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
-        self.app.add(self.add_loop(mand_attributes, opt_attributes, "book"))
+        self.app.add_reference(self.add_loop(mand_attributes, opt_attributes, "book"))
 
     def add_inproceedings(self):
         mand_attributes = ["author", "title"]
         opt_attributes = ["booktitle", "year", "editor", "volume", "number", "series", "pages",
                           "month", "address", "organization", "publisher", "note", "annote"]
-        self.app.add(self.add_loop(mand_attributes,
+        self.app.add_reference(self.add_loop(mand_attributes,
                      opt_attributes, "inproceedings"))
 
     def add_phdthesis(self):
         mand_attributes = ["author", "title", "school", "year"]
         opt_attributes = ["type", "address", "month", "note", "annote"]
-        self.app.add(self.add_loop(mand_attributes,
+        self.app.add_reference(self.add_loop(mand_attributes,
                      opt_attributes, "phdthesis"))
 
     def add_loop(self, mand_attributes, opt_attributes, reftype):
@@ -138,7 +146,7 @@ class UI():
                     continue
                 bibtex.add(key, value)
 
-        self.app.add(bibtex)
+        self.app.add_reference(bibtex)
         self.io.write_screen("\nReference added successfully!")
 
     def create_bibtex_obj(self, reftype):

@@ -194,7 +194,6 @@ class UI():
 
     def save_to_file(self):
         self.io.write_screen(self.file_saver.write())
-    
 
     def find_reference(self):
         citekey = self.io.read_input("Enter the citekey of the reference you want to find: ")

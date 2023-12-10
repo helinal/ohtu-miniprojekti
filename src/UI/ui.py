@@ -27,7 +27,8 @@ class UI():
                 "3 to save references to file \n" +
                 "4 to add by DOI \n" +
                 "5 to delete a reference \n" +
-                "6 to stop\n>>> ")
+                "6 find saved reference with citekey  \n" +
+                "7 to stop\n>>> ")
 
             if option == "1":
                 self.add_reference()
@@ -45,7 +46,11 @@ class UI():
                 self.delete_reference()
 
             elif option == "6":
+                self.find_reference()
+
+            elif option == "7":
                 break
+
             else:
                 self.io.write_screen(self.invalid_message)
 
@@ -189,3 +194,8 @@ class UI():
 
     def save_to_file(self):
         self.io.write_screen(self.file_saver.write())
+    
+
+    def find_reference(self):
+        citekey = self.io.read_input("Enter the citekey of the reference you want to find: ")
+        self.app.find_reference(citekey)

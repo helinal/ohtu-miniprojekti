@@ -1,9 +1,11 @@
 import pickle
+from services.IO import KonsoliIO
 
 
 class BibTex_Repository():
     def __init__(self, connection):
         self._connection = connection
+        self.io = KonsoliIO()
 
     def save(self, bibtex_obj, tag):
         cursor = self._connection.cursor()
@@ -31,6 +33,25 @@ class BibTex_Repository():
 
         self._connection.commit()
         # return status ongoing
+    
+    def find_reference(self, citekey):
+        cursor = self._connection.cursor()
+    
+        cursor.execute(
+             """SELECT * FROM bibtex WHERE citekey=?""",
+             (citekey,)
+         )
+        
+        result = cursor.fetchone()
+
+        if result:
+            result_list = []
+            unpickled = pickle.loads(result[1])
+            result_list.append(unpickled)
+            self.io.print_readable_form(result_list)
+             
+        else:
+            print("\nCitekey not found.")
 
     def fetch_all(self):
         cursor = self._connection.cursor()

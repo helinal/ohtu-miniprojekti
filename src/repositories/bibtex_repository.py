@@ -49,7 +49,6 @@ class BibTex_Repository():
             unpickled = pickle.loads(result[1])
             result_list.append(unpickled)
             self.io.print_readable_form(result_list)
-             
         else:
             print("\nCitekey not found.")
 

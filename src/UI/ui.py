@@ -50,7 +50,8 @@ class UI():
                 self.io.write_screen(self.invalid_message)
 
     def delete_reference(self):
-        citekey = self.io.read_input("Enter the citekey of the reference you want to delete: ")
+        citekey = self.io.read_input(
+            "Enter the citekey of the reference you want to delete: ")
         self.app.delete_reference(citekey)
 
     def add_reference(self):
@@ -87,25 +88,27 @@ class UI():
     def add_article(self):
         mand_attributes = ["author", "title", "journal", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
-        self.app.add_reference(self.add_loop(mand_attributes, opt_attributes, "article"))
+        self.app.add_reference(self.add_loop(
+            mand_attributes, opt_attributes, "article"))
 
     def add_book(self):
         mand_attributes = ["author", "editor", "title", "publisher", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
-        self.app.add_reference(self.add_loop(mand_attributes, opt_attributes, "book"))
+        self.app.add_reference(self.add_loop(
+            mand_attributes, opt_attributes, "book"))
 
     def add_inproceedings(self):
         mand_attributes = ["author", "title"]
         opt_attributes = ["booktitle", "year", "editor", "volume", "number", "series", "pages",
                           "month", "address", "organization", "publisher", "note", "annote"]
         self.app.add_reference(self.add_loop(mand_attributes,
-                     opt_attributes, "inproceedings"))
+                                             opt_attributes, "inproceedings"))
 
     def add_phdthesis(self):
         mand_attributes = ["author", "title", "school", "year"]
         opt_attributes = ["type", "address", "month", "note", "annote"]
         self.app.add_reference(self.add_loop(mand_attributes,
-                     opt_attributes, "phdthesis"))
+                                             opt_attributes, "phdthesis"))
 
     def add_loop(self, mand_attributes, opt_attributes, reftype):
         bibtex = self.create_bibtex_obj(reftype)

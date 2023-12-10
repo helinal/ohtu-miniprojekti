@@ -56,7 +56,7 @@ class UILibrary:
 
     def input_nothing_for_a_number_of_times(self, times):
         times = int(times)
-        for i in range(times): #pylint: disable=unused-variable
+        for i in range(times):  # pylint: disable=unused-variable
             self.io.add_input("")
 
     def run_application(self):

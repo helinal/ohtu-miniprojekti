@@ -18,10 +18,6 @@ class Bibtex():
         year = self.bibDict["year"]
         self.citekey = str(author) + str(year)
 
-    # def add_from_bibtex(self, bibtex_obj):
-    #     for entry in bibtex_obj.entries:
-    #         for key, value in entry.items():
-    #             self.bibDict[key] = value
 
     def loop_to_string(self):
         ret = ""

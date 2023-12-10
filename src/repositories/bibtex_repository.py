@@ -36,12 +36,10 @@ class BibTex_Repository():
 
     def find_reference(self, citekey):
         cursor = self._connection.cursor()
-        
         cursor.execute(
-             """SELECT * FROM bibtex WHERE citekey=?""",
-             (citekey,)
-         )
-        
+            """SELECT * FROM bibtex WHERE citekey=?""",
+            (citekey,)
+        )
         result = cursor.fetchone()
 
         if result:

@@ -145,7 +145,7 @@ class UI():
 
     def add_by_doi(self):
 
-        doi = self.io.read_input("Enter DOI:")
+        doi = self.io.read_input("\nEnter DOI:")
         data = self.doi_service.fetch(doi)
         if not data:
             self.io.write_screen(
@@ -218,12 +218,12 @@ class UI():
 
     def find_reference(self):
         tag = self.io.read_input(
-            "Enter the tag of the reference you want to find: ")
+            "\nEnter the tag of the reference you want to find: ")
         result = self.app.find_reference(tag)
         if result:
             self.io.print_readable_form(result)
         else:
-            self.io.write_screen("\n[bold red]Tag not found[/bold red]\n")
+            self.io.write_screen("\n[bold red]Tag not found[/bold red]")
 
         # save = self.io.read_input(
         #    "Do you want to save references under this tag to file: ")

@@ -12,4 +12,4 @@ All data goes from db to a .bib file
     Input Save Command
     Input Stop Command
     Run Application
-    Output Should Contain  References saved to file. References can be found in src/data/bibtex.bib
+    Output Should Contain  \n[bold green]References saved to file. References can be found in src/data/bibtex.bib[/bold green]

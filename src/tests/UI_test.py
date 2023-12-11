@@ -98,6 +98,6 @@ class TestUI(unittest.TestCase):
         self.stub_io = StubIO(["6", "wrong112", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
-        expected_output = "\n[bold red]Tag not found[/bold red]\n"
+        expected_output = "\n[bold red]Tag not found[/bold red]"
         print(self.stub_io.outputs)
         self.assertEqual(expected_output, self.stub_io.outputs[0])

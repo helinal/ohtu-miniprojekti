@@ -1,12 +1,9 @@
 import pickle
-from rich import print  # pylint: disable=redefined-builtin
-from services.IO import KonsoliIO
 
 
 class BibTex_Repository():
     def __init__(self, connection):
         self._connection = connection
-        self.io = KonsoliIO()
 
     def save(self, bibtex_obj, tag):
         cursor = self._connection.cursor()
@@ -41,15 +38,12 @@ class BibTex_Repository():
             """SELECT * FROM bibtex WHERE tag=?""",
             (tag,)
         )
-        result = cursor.fetchone()
+        result = cursor.fetchall()
 
         if result:
-            result_list = []
-            unpickled = pickle.loads(result[1])
-            result_list.append(unpickled)
-            self.io.print_readable_form(result_list)
-        else:
-            print("[bold red]\nCitekey not found.[bold red]")
+            result_list = [pickle.loads(res[1]) for res in result]
+            return result_list
+        return None
 
     def fetch_all(self):
         cursor = self._connection.cursor()

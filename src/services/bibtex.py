@@ -1,3 +1,6 @@
+import random
+
+
 class Bibtex():
     def __init__(self, docutype):
         self.docutype = docutype
@@ -14,9 +17,13 @@ class Bibtex():
         )
 
     def create_citekey(self):
-        author = self.bibDict["author"]
-        year = self.bibDict["year"]
-        self.citekey = str(author) + str(year)
+        author = self.bibDict["author"].split(', ')
+        try:
+            year = self.bibDict["year"]
+        except KeyError:
+            year = random.randint(1000, 10000)
+
+        self.citekey = str(author[0]) + str(year)
 
     def loop_to_string(self):
         ret = ""

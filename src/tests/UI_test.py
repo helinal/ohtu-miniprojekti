@@ -94,10 +94,10 @@ class TestUI(unittest.TestCase):
         print(self.stub_io.outputs)
         self.assertEqual(expected_output, self.stub_io.outputs[0])
 
-    def test_search_reference_with_cwrong_citekey(self):
+    def test_search_reference_with_wrong_tag(self):
         self.stub_io = StubIO(["6", "wrong112", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
-        expected_output = "\nCitekey not found."
+        expected_output = "\n[bold red]Tag not found[/bold red]\n"
         print(self.stub_io.outputs)
         self.assertEqual(expected_output, self.stub_io.outputs[0])

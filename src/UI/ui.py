@@ -200,6 +200,8 @@ class UI():
     def add_tags(self):
         tagstring = self.io.read_input(
             "tags (optional, separated by a comma): ")
+        if tagstring == '':
+            return 'NULL'
         return tagstring
 
     def print_all(self):
@@ -212,6 +214,11 @@ class UI():
     def find_reference(self):
         tag = self.io.read_input(
             "Enter the tag of the reference you want to find: ")
-        self.app.find_reference(tag)
+        result = self.app.find_reference(tag)
+        if result:
+            self.io.print_readable_form(result)
+        else:
+            self.io.write_screen("\n[bold red]Tag not found[/bold red]\n")
+
         # save = self.io.read_input(
         #    "Do you want to save references under this tag to file: ")

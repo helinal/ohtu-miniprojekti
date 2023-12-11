@@ -62,9 +62,9 @@ class UI():
         citekey = self.io.read_input(
             "Enter the citekey of the reference you want to delete: ")
         status = self.app.delete_reference(citekey)
-        if status == True:
+        if status is True:
             self.io.write_screen("Deleted")
-        if status == False:
+        if status is False:
             self.io.write_screen("Delete failed")
 
     def add_reference(self):
@@ -166,7 +166,8 @@ class UI():
                     continue
                 bibtex.add(key, value)
 
-        self.app.add_reference(bibtex)
+        tag = self.add_tags()
+        self.app.add_reference(bibtex, tag)
         self.io.write_screen(
             "\n[bold green]Reference added successfully![bold green]")
 
@@ -205,7 +206,7 @@ class UI():
         tagstring = self.io.read_input(
             "tags (optional, separated by a comma): ")
         if tagstring == '':
-            return 'NULL'
+            return 'DEFAULT'
         return tagstring
 
     def print_all(self):

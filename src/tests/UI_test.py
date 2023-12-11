@@ -79,7 +79,7 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs[0], expected_output)
 
     def test_add_reference_with_doi(self):
-        self.stub_io = StubIO(["4", "10.1007/s11192-014-1506-1", "7"])
+        self.stub_io = StubIO(["4", "10.1007/s11192-014-1506-1", "", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
         expected_output = "\n[bold green]Reference added successfully![bold green]"

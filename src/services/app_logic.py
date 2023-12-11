@@ -15,7 +15,6 @@ class AppLogic():
         status = self.bib_repo.delete_object(citekey)
         self.citations = self.initialize_citations()
         return status
-            
 
     def find_reference(self, tag):
         return self.bib_repo.find_reference(tag)

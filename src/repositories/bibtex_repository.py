@@ -19,14 +19,14 @@ class BibTex_Repository():
 
     def delete_object(self, citekey):
         cursor = self._connection.cursor()
-        
+
         cursor.execute(
             """DELETE FROM bibtex WHERE citekey=?""",
             (citekey,)
         )
         rowcount = cursor.rowcount
         self._connection.commit()
-        
+
         return rowcount != 0
 
     def find_reference(self, tag):

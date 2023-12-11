@@ -198,7 +198,7 @@ class UI():
         return bibtex
 
     def add_tags(self):
-        tagstring = self.io.read_input("tags (optional, separated by a comma)")
+        tagstring = self.io.read_input("tags (optional, separated by a comma): ")
         return tagstring
 
     def print_all(self):
@@ -212,9 +212,6 @@ class UI():
         tag = self.io.read_input(
             "Enter the tag of the reference you want to find: ")
         self.app.find_reference(tag)
-        save = self.io.read_input(
-            "Do you want to save references under this tag to file: ")
-
-    
-    def save_reference_by_tag(self):
+        #save = self.io.read_input(
+        #    "Do you want to save references under this tag to file: ")
         

@@ -1,5 +1,6 @@
 import pickle
 from services.IO import KonsoliIO
+from rich import print
 
 
 class BibTex_Repository():
@@ -48,7 +49,7 @@ class BibTex_Repository():
             result_list.append(unpickled)
             self.io.print_readable_form(result_list)
         else:
-            print("\nCitekey not found.")
+            print("[bold red]\nCitekey not found.[bold red]")
 
     def fetch_all(self):
         cursor = self._connection.cursor()

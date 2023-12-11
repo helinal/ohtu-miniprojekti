@@ -28,7 +28,7 @@ class UI():
                 "3 to [bright_blue]save references to file[/bright_blue]\n"+
                 "4 to [bright_blue]add by DOI[/bright_blue]\n"+
                 "5 to [bright_blue]delete a reference[/bright_blue]\n"+
-                "6 to [bright_blue]search saved reference with citekey[/bright_blue]\n"+
+                "6 to [bright_blue]search saved references with citekey[/bright_blue]\n"+
                 "7 to [bright_blue]stop[/bright_blue]\n"
             )
 

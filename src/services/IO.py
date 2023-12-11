@@ -1,4 +1,4 @@
-class KonsoliIO():
+class ConsoleIO():
     def read_input(self, text):
         return input(text)
 

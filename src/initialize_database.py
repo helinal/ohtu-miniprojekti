@@ -1,9 +1,9 @@
-from database_connection import get_data_base_connection
+from database_connection import get_database_connection
 from config import BIBTEX_FILE_PATH
 
 
 def initialize_database():
-    connection = get_data_base_connection()
+    connection = get_database_connection()
     drop_tables(connection)
     createtable(connection)
     with open(BIBTEX_FILE_PATH, 'w', encoding='utf-8'):

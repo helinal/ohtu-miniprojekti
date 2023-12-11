@@ -2,7 +2,7 @@
 from config import BIBTEX_FILE_PATH
 
 
-class File_Saver:
+class FileService:
     def __init__(self, bib_repo=None):
         self.bib_repo = bib_repo
 

@@ -2,7 +2,7 @@ import requests
 import bibtexparser
 
 
-class Doi_Service:
+class DoiService:
     def __init__(self):
         self.doi_url = 'https://dx.doi.org/'
         self.headers = {"accept": "application/x-bibtex"}

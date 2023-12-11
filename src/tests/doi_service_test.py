@@ -1,13 +1,13 @@
 import unittest
 from unittest.mock import patch, Mock
 import requests
-from services.doi_service import Doi_Service
+from services.doi_service import DoiService
 
 
 class TestDoiService(unittest.TestCase):
 
     def setUp(self):
-        self.doi_service = Doi_Service()
+        self.doi_service = DoiService()
 
     def test_fetch_with_correct_doi(self):
         doi = '10.1016/S1574-0137(19)30321-1'

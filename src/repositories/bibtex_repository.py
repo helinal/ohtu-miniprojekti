@@ -1,7 +1,7 @@
 import pickle
 
 
-class BibTex_Repository():
+class BibTexRepository():
     def __init__(self, connection):
         self._connection = connection
 

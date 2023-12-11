@@ -28,7 +28,7 @@ class UI():
                 "3 to [bright_blue]save references to file[/bright_blue]\n" +
                 "4 to [bright_blue]add by DOI[/bright_blue]\n" +
                 "5 to [bright_blue]delete a reference[/bright_blue]\n" +
-                "6 to [bright_blue]search saved references with citekey[/bright_blue]\n" +
+                "6 to [bright_blue]search saved references with tag[/bright_blue]\n" +
                 "7 to [bright_blue]stop[/bright_blue]\n"
             )
 
@@ -209,6 +209,12 @@ class UI():
         self.io.write_screen(self.file_saver.write())
 
     def find_reference(self):
-        citekey = self.io.read_input(
-            "Enter the citekey of the reference you want to find: ")
-        self.app.find_reference(citekey)
+        tag = self.io.read_input(
+            "Enter the tag of the reference you want to find: ")
+        self.app.find_reference(tag)
+        save = self.io.read_input(
+            "Do you want to save references under this tag to file: ")
+
+    
+    def save_reference_by_tag(self):
+        

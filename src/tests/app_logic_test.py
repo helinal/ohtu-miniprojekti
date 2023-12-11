@@ -24,8 +24,14 @@ class TestAppLogic(unittest.TestCase):
         comparison_value = self.bib_repo.fetch_all()
         self.assertEqual(value, comparison_value)
 
-    def test_add_citation(self):
+    def test_add_reference(self):
         self.app_logic.add_reference(self.obj)
+        value = self.app_logic.return_all()
+        comparison_value = self.bib_repo.fetch_all()
+        self.assertEqual(value, comparison_value)
+
+    def test_delete_reference(self):
+        self.app_logic.delete_reference(self.obj)
         value = self.app_logic.return_all()
         comparison_value = self.bib_repo.fetch_all()
         self.assertEqual(value, comparison_value)

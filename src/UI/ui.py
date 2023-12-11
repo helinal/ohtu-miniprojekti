@@ -22,14 +22,14 @@ class UI():
     def start(self):
         while True:
             self.console.print(
-            "\n[bold cyan1]Choose an action:[/bold cyan1]\n"+
-            "1 to [bright_blue]add references[/bright_blue]\n"+
-            "2 to [bright_blue]print references[/bright_blue]\n"+
-            "3 to [bright_blue]save references to file[/bright_blue]\n"+
-            "4 to [bright_blue]add by DOI[/bright_blue]\n"+
-            "5 to [bright_blue]delete a reference[/bright_blue]\n"+
-            "6 to [bright_blue]search saved reference with citekey[/bright_blue]\n"+
-            "7 to [bright_blue]stop[/bright_blue]\n"
+                "\n[bold cyan1]Choose an action:[/bold cyan1]\n"+
+                "1 to [bright_blue]add references[/bright_blue]\n"+
+                "2 to [bright_blue]print references[/bright_blue]\n"+
+                "3 to [bright_blue]save references to file[/bright_blue]\n"+
+                "4 to [bright_blue]add by DOI[/bright_blue]\n"+
+                "5 to [bright_blue]delete a reference[/bright_blue]\n"+
+                "6 to [bright_blue]search saved reference with citekey[/bright_blue]\n"+
+                "7 to [bright_blue]stop[/bright_blue]\n"
             )
 
             option = self.io.read_input(">>> ")
@@ -66,13 +66,16 @@ class UI():
 
     def add_reference(self):
         while True:
-            option = self.io.read_input(
-                "\nChoose reference type: \n" +
-                "1 to add article\n" +
-                "2 to add book\n" +
-                "3 to add inproceedings\n" +
-                "4 to add phdthesis\n" +
-                "5 to go back to main menu \n>>> ")
+            self.console.print(
+                "\n[bold cyan2]Choose reference type:[/bold cyan2]\n"+
+                "[cyan]1[/cyan] to [bright_blue]add article[/bright_blue]\n"+
+                "[cyan]2[/cyan] to [bright_blue]add book[/bright_blue]\n"+
+                "[cyan]3[/cyan] to [bright_blue]add inproceedings[/bright_blue]\n"+
+                "[cyan]4[/cyan] to [bright_blue]add phdthesis[/bright_blue]\n"+
+                "[cyan]5[/cyan] to [bright_blue]go back to main menu[/bright_blue]\n"
+            )
+
+            option = self.io.read_input(">>> ")
 
             if option == "1":
                 self.add_article()
@@ -142,7 +145,7 @@ class UI():
         doi = self.io.read_input("Enter DOI:")
         data = self.doi_service.fetch(doi)
         if not data:
-            self.io.write_screen("\nInvalid DOI, please try again")
+            self.io.write_screen("\n[bold red]Invalid DOI, please try again[/bold red]")
             return
         entry_type = data.entries[0]["ENTRYTYPE"]
         entry_author = data.entries[0]["author"]
@@ -160,7 +163,7 @@ class UI():
                 bibtex.add(key, value)
 
         self.app.add_reference(bibtex)
-        self.io.write_screen("\nReference added successfully!")
+        self.io.write_screen("\n[bold green]Reference added successfully![bold green]")
 
     def create_bibtex_obj(self, reftype):
         bibtex = Bibtex(reftype)
@@ -184,7 +187,7 @@ class UI():
 
             except ValueError:
                 self.io.write_screen(
-                    "Year needs to be only numbers, try again.")
+                    "\n[bold red]Year needs to be only numbers, try again.[/bold red]\n")
                 continue
 
     def add_optional(self, bibtex, attribute):

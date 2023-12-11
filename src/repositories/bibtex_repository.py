@@ -19,18 +19,15 @@ class BibTex_Repository():
 
     def delete_object(self, citekey):
         cursor = self._connection.cursor()
-        status = ""  # pylint: disable=unused-variable
-        try:
-            cursor.execute(
-                """DELETE FROM bibtex WHERE citekey=?""",
-                (citekey,)
-            )
-            status = True
-        except Exception as e:  # pylint: disable=unused-variable, W0718
-            status = False
-
+        
+        cursor.execute(
+            """DELETE FROM bibtex WHERE citekey=?""",
+            (citekey,)
+        )
+        rowcount = cursor.rowcount
         self._connection.commit()
-        # return status ongoing
+        
+        return rowcount != 0
 
     def find_reference(self, tag):
         cursor = self._connection.cursor()

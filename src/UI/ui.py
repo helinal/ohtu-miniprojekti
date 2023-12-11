@@ -14,7 +14,7 @@ class UI():
             self.bib_repo = BibTex_Repository(get_data_base_connection())
         self.app = AppLogic(self.bib_repo)
         self.file_saver = File_Saver(self.bib_repo)
-        self.invalid_message = "\n[bold red]Invalid input, please try again.[/bold red]"
+        self.invalid_message = "[bold red]\nInvalid input, please try again.[/bold red]"
         self.doi_service = Doi_Service()
         self.console = Console()
         

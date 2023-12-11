@@ -53,7 +53,7 @@ class TestUI(unittest.TestCase):
 
     def test_add_article_with_empty_author_and_print_all(self):
         self.stub_io = StubIO(
-            ["1", "1", "", "asd", "asd", "asd", '123', "", "", "", "", "", "2", "7"])
+            ["1", "1", "", "asd", "asd", "asd", '123', "", "", "", "", "", "", "2", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 

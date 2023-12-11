@@ -9,7 +9,7 @@ Resource  resource.robot
 Inproceedings references save in inproceedings form
     Input Add Command
     Loop over inputs for the inproceedings test
-    Input Nothing For A Number Of Times  11
+    Input Nothing For A Number Of Times  12
     Input Print Command
     Input Stop Command
     Run Application
@@ -18,7 +18,7 @@ Inproceedings references save in inproceedings form
 Phdthesis references save in phdthesis form
     Input Add Command
     Loop Over Inputs For The Phdthesis Test
-    Input Nothing For A Number Of Times  5
+    Input Nothing For A Number Of Times  6
     Input Print Command
     Input Stop Command
     Run Application

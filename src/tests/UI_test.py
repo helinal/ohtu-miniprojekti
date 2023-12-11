@@ -93,8 +93,7 @@ class TestUI(unittest.TestCase):
         expected_output = "\n[bold red]Invalid DOI, please try again[/bold red]"
         print(self.stub_io.outputs)
         self.assertEqual(expected_output, self.stub_io.outputs[0])
-    
-    
+
     def test_search_reference_with_cwrong_citekey(self):
         self.stub_io = StubIO(["6", "wrong112", "7"])
         self.ui = UI(self.stub_io)
@@ -102,4 +101,3 @@ class TestUI(unittest.TestCase):
         expected_output = "\nCitekey not found."
         print(self.stub_io.outputs)
         self.assertEqual(expected_output, self.stub_io.outputs[0])
-    

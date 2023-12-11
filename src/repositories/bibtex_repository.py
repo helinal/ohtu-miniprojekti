@@ -1,5 +1,5 @@
 import pickle
-from rich import print # pylint: disable=redefined-builtin
+from rich import print  # pylint: disable=redefined-builtin
 from services.IO import KonsoliIO
 
 

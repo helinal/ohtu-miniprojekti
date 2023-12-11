@@ -4,7 +4,7 @@ from services.file_service import File_Saver
 from services.doi_service import Doi_Service
 from repositories.bibtex_repository import BibTex_Repository
 from database_connection import get_data_base_connection
-
+from rich.console import Console
 
 class UI():
     def __init__(self, io, bib_repo=None):
@@ -14,21 +14,25 @@ class UI():
             self.bib_repo = BibTex_Repository(get_data_base_connection())
         self.app = AppLogic(self.bib_repo)
         self.file_saver = File_Saver(self.bib_repo)
-        self.invalid_message = "Invalid input, try again."
+        self.invalid_message = "\n[bold red]Invalid input, please try again.[/bold red]"
         self.doi_service = Doi_Service()
+        self.console = Console()
+        
 
     def start(self):
         while True:
+            self.console.print(
+            "\n[bold cyan1]Choose an action:[/bold cyan1]\n"+
+            "1 to [bright_blue]add references[/bright_blue]\n"+
+            "2 to [bright_blue]print references[/bright_blue]\n"+
+            "3 to [bright_blue]save references to file[/bright_blue]\n"+
+            "4 to [bright_blue]add by DOI[/bright_blue]\n"+
+            "5 to [bright_blue]delete a reference[/bright_blue]\n"+
+            "6 to [bright_blue]search saved reference with citekey[/bright_blue]\n"+
+            "7 to [bright_blue]stop[/bright_blue]\n"
+            )
 
-            option = self.io.read_input(
-                "\nChoose an action: \n" +
-                "1 to add references \n" +
-                "2 to print references \n" +
-                "3 to save references to file \n" +
-                "4 to add by DOI \n" +
-                "5 to delete a reference \n" +
-                "6 find saved reference with citekey  \n" +
-                "7 to stop\n>>> ")
+            option = self.io.read_input(">>> ")
 
             if option == "1":
                 self.add_reference()
@@ -58,6 +62,7 @@ class UI():
         citekey = self.io.read_input(
             "Enter the citekey of the reference you want to delete: ")
         self.app.delete_reference(citekey)
+
 
     def add_reference(self):
         while True:

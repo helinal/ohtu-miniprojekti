@@ -13,7 +13,11 @@ class File_Saver:
         refs_as_string = '\n'.join(string_list)
         file_path = BIBTEX_FILE_PATH
 
-        with open(file_path, 'w', encoding='utf-8') as bib_file:
-            bib_file.write(refs_as_string)
+        try:
+            with open(file_path, 'w', encoding='utf-8') as bib_file:
+                bib_file.write(refs_as_string)
+            return "References saved to file. References can be found in src/data/bibtex.bib"
 
-        return "References saved to file. References can be found in src/data/bibtex.bib"
+        except OSError as e:
+            error_str = f"File save failed: {str(e)}"
+            return error_str

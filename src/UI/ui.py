@@ -59,13 +59,13 @@ class UI():
                 self.io.write_screen(self.invalid_message)
 
     def delete_reference(self):
-        citekey = self.io.read_input(
-            "Enter the citekey of the reference you want to delete: ")
+        self.io.write_screen("\nEnter the citekey of the reference you want to delete:\n ")
+        citekey = self.io.read_input('>>> ')
         status = self.app.delete_reference(citekey)
         if status is True:
-            self.io.write_screen("Deleted")
+            self.io.write_screen("\n[bold green]Deleted[/bold green]")
         if status is False:
-            self.io.write_screen("Delete failed")
+            self.io.write_screen("\n[bold red]Delete failed[/bold red]")
 
     def add_reference(self):
         while True:

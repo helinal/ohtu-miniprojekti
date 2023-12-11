@@ -3,7 +3,6 @@ from UI.ui import UI
 from services.app_logic import AppLogic
 
 
-
 class StubIO:
     def __init__(self, inputs: list):
         self.inputs = inputs
@@ -28,7 +27,8 @@ class TestUI(unittest.TestCase):
         self.ui = UI(self.stub_io)
         self.ui.start()
 
-        expected_output = ["[bold red]\nInvalid input, please try again.[/bold red]"]
+        expected_output = [
+            "[bold red]\nInvalid input, please try again.[/bold red]"]
 
         self.assertEqual(self.stub_io.outputs, expected_output)
 
@@ -42,16 +42,18 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs, expected_output)
 
     def test_try_to_add_non_supported_docutype(self):
-        self.stub_io = StubIO(["1", "999","5","7"])
+        self.stub_io = StubIO(["1", "999", "5", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
-        expected_output = ["[bold red]\nInvalid input, please try again.[/bold red]"]
+        expected_output = [
+            "[bold red]\nInvalid input, please try again.[/bold red]"]
 
         self.assertEqual(self.stub_io.outputs, expected_output)
 
     def test_add_article_with_empty_author_and_print_all(self):
-        self.stub_io = StubIO(["1", "1","","asd","asd","asd",'123',"","","","","","2","7"])
+        self.stub_io = StubIO(
+            ["1", "1", "", "asd", "asd", "asd", '123', "", "", "", "", "", "2", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
 
@@ -59,7 +61,6 @@ class TestUI(unittest.TestCase):
         print(self.stub_io.outputs)
 
         expected_output = "[bold red]\nInvalid input, please try again.[/bold red]"
-
 
         self.assertEqual(self.stub_io.outputs[0], expected_output)
         self.assertEqual(len(self.stub_io.outputs), 2)
@@ -78,7 +79,7 @@ class TestUI(unittest.TestCase):
         self.assertEqual(self.stub_io.outputs[0], expected_output)
 
     def test_add_reference_with_doi(self):
-        self.stub_io = StubIO(["4","10.1007/s11192-014-1506-1","7"])
+        self.stub_io = StubIO(["4", "10.1007/s11192-014-1506-1", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
         expected_output = "\n[bold green]Reference added successfully![bold green]"
@@ -86,7 +87,7 @@ class TestUI(unittest.TestCase):
         self.assertEqual(expected_output, self.stub_io.outputs[0])
 
     def test_add_reference_incorrect_doi(self):
-        self.stub_io = StubIO(["4","asdsad","7"])
+        self.stub_io = StubIO(["4", "asdsad", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
         expected_output = "\n[bold red]Invalid DOI, please try again[/bold red]"

@@ -1,6 +1,6 @@
 import pickle
+from rich import print # pylint: disable=redefined-builtin
 from services.IO import KonsoliIO
-from rich import print
 
 
 class BibTex_Repository():
@@ -22,14 +22,14 @@ class BibTex_Repository():
 
     def delete_object(self, citekey):
         cursor = self._connection.cursor()
-        status = "" # pylint: disable=unused-variable
+        status = ""  # pylint: disable=unused-variable
         try:
             cursor.execute(
                 """DELETE FROM bibtex WHERE citekey=?""",
                 (citekey,)
             )
             status = True
-        except Exception as e: # pylint: disable=unused-variable, W0718
+        except Exception as e:  # pylint: disable=unused-variable, W0718
             status = False
 
         self._connection.commit()

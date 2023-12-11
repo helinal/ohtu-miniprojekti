@@ -1,10 +1,11 @@
+from rich.console import Console
 from services.bibtex import Bibtex
 from services.app_logic import AppLogic
 from services.file_service import File_Saver
 from services.doi_service import Doi_Service
 from repositories.bibtex_repository import BibTex_Repository
 from database_connection import get_data_base_connection
-from rich.console import Console
+
 
 class UI():
     def __init__(self, io, bib_repo=None):
@@ -17,18 +18,17 @@ class UI():
         self.invalid_message = "[bold red]\nInvalid input, please try again.[/bold red]"
         self.doi_service = Doi_Service()
         self.console = Console()
-        
 
     def start(self):
         while True:
             self.console.print(
-                "\n[bold cyan1]Choose an action:[/bold cyan1]\n"+
-                "1 to [bright_blue]add references[/bright_blue]\n"+
-                "2 to [bright_blue]print references[/bright_blue]\n"+
-                "3 to [bright_blue]save references to file[/bright_blue]\n"+
-                "4 to [bright_blue]add by DOI[/bright_blue]\n"+
-                "5 to [bright_blue]delete a reference[/bright_blue]\n"+
-                "6 to [bright_blue]search saved references with citekey[/bright_blue]\n"+
+                "\n[bold cyan1]Choose an action:[/bold cyan1]\n" +
+                "1 to [bright_blue]add references[/bright_blue]\n" +
+                "2 to [bright_blue]print references[/bright_blue]\n" +
+                "3 to [bright_blue]save references to file[/bright_blue]\n" +
+                "4 to [bright_blue]add by DOI[/bright_blue]\n" +
+                "5 to [bright_blue]delete a reference[/bright_blue]\n" +
+                "6 to [bright_blue]search saved references with citekey[/bright_blue]\n" +
                 "7 to [bright_blue]stop[/bright_blue]\n"
             )
 
@@ -63,15 +63,14 @@ class UI():
             "Enter the citekey of the reference you want to delete: ")
         self.app.delete_reference(citekey)
 
-
     def add_reference(self):
         while True:
             self.console.print(
-                "\n[bold cyan2]Choose reference type:[/bold cyan2]\n"+
-                "[cyan]1[/cyan] to [bright_blue]add article[/bright_blue]\n"+
-                "[cyan]2[/cyan] to [bright_blue]add book[/bright_blue]\n"+
-                "[cyan]3[/cyan] to [bright_blue]add inproceedings[/bright_blue]\n"+
-                "[cyan]4[/cyan] to [bright_blue]add phdthesis[/bright_blue]\n"+
+                "\n[bold cyan2]Choose reference type:[/bold cyan2]\n" +
+                "[cyan]1[/cyan] to [bright_blue]add article[/bright_blue]\n" +
+                "[cyan]2[/cyan] to [bright_blue]add book[/bright_blue]\n" +
+                "[cyan]3[/cyan] to [bright_blue]add inproceedings[/bright_blue]\n" +
+                "[cyan]4[/cyan] to [bright_blue]add phdthesis[/bright_blue]\n" +
                 "[cyan]5[/cyan] to [bright_blue]go back to main menu[/bright_blue]\n"
             )
 
@@ -145,7 +144,8 @@ class UI():
         doi = self.io.read_input("Enter DOI:")
         data = self.doi_service.fetch(doi)
         if not data:
-            self.io.write_screen("\n[bold red]Invalid DOI, please try again[/bold red]")
+            self.io.write_screen(
+                "\n[bold red]Invalid DOI, please try again[/bold red]")
             return
         entry_type = data.entries[0]["ENTRYTYPE"]
         entry_author = data.entries[0]["author"]
@@ -163,7 +163,8 @@ class UI():
                 bibtex.add(key, value)
 
         self.app.add_reference(bibtex)
-        self.io.write_screen("\n[bold green]Reference added successfully![bold green]")
+        self.io.write_screen(
+            "\n[bold green]Reference added successfully![bold green]")
 
     def create_bibtex_obj(self, reftype):
         bibtex = Bibtex(reftype)
@@ -204,5 +205,6 @@ class UI():
         self.io.write_screen(self.file_saver.write())
 
     def find_reference(self):
-        citekey = self.io.read_input("Enter the citekey of the reference you want to find: ")
+        citekey = self.io.read_input(
+            "Enter the citekey of the reference you want to find: ")
         self.app.find_reference(citekey)

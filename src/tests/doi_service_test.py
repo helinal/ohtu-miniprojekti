@@ -25,4 +25,5 @@ class TestDoiService(unittest.TestCase):
         mock_get.side_effect = requests.Timeout
         result = self.doi_service.fetch('10100010/ha')
         self.assertIsNone(result)
-        mock_get.assert_called_once_with('https://dx.doi.org//10100010/ha', headers={"accept": "application/x-bibtex"}, timeout=10)
+        mock_get.assert_called_once_with(
+            'https://dx.doi.org//10100010/ha', headers={"accept": "application/x-bibtex"}, timeout=10)

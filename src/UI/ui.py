@@ -101,26 +101,26 @@ class UI():
         mand_attributes = ["author", "title", "journal", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
         self.app.add_reference(self.add_loop(
-            mand_attributes, opt_attributes, "article"))
+            mand_attributes, opt_attributes, "article"), self.add_tags())
 
     def add_book(self):
         mand_attributes = ["author", "editor", "title", "publisher", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
         self.app.add_reference(self.add_loop(
-            mand_attributes, opt_attributes, "book"))
+            mand_attributes, opt_attributes, "book"), self.add_tags())
 
     def add_inproceedings(self):
         mand_attributes = ["author", "title"]
         opt_attributes = ["booktitle", "year", "editor", "volume", "number", "series", "pages",
                           "month", "address", "organization", "publisher", "note", "annote"]
         self.app.add_reference(self.add_loop(mand_attributes,
-                                             opt_attributes, "inproceedings"))
+                                             opt_attributes, "inproceedings"), self.add_tags())
 
     def add_phdthesis(self):
         mand_attributes = ["author", "title", "school", "year"]
         opt_attributes = ["type", "address", "month", "note", "annote"]
         self.app.add_reference(self.add_loop(mand_attributes,
-                                             opt_attributes, "phdthesis"))
+                                             opt_attributes, "phdthesis"), self.add_tags())
 
     def add_loop(self, mand_attributes, opt_attributes, reftype):
         bibtex = self.create_bibtex_obj(reftype)
@@ -196,6 +196,10 @@ class UI():
         if value:
             bibtex.add(attribute, value)
         return bibtex
+
+    def add_tags(self):
+        tagstring = self.io.read_input("tags (optional, separated by a comma)")
+        return tagstring
 
     def print_all(self):
         all_refs = self.app.return_all()

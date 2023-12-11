@@ -198,7 +198,7 @@ class UI():
         return bibtex
 
     def add_tags(self):
-        tagstring = self.io.read_input("tags (optional, separated by a comma)")
+        tagstring = self.io.read_input("tags (optional, separated by a comma): ")
         return tagstring
 
     def print_all(self):

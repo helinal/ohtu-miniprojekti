@@ -57,8 +57,21 @@ invoke start
 - Press _4_ and _Enter_ in the start menu to add a reference by DOI identifier
 - Next, simply input the DOI to add the reference. It's that easy!
 
+### Deleting a reference
+
+- Press _5_ and _Enter_ in the start menu to delete a reference by the citekey
+- Enter the citekey of the reference you want to delete and press _Enter_
+- Wow! The reference is deleted!
+
+### Searching for a reference
+
+- Press _6_ and _Enter_ in the start menu to search for a saved reference with a tag
+- Enter the tag of the reference you want to find and press _Enter_
+- The search result is then printed in a readable form
+
 ### Quit
-- Press _5_ in the start menu to exit the program
+
+- Press _7_ and _Enter_ in the start menu to exit the program
 
 ### Resetting the database
 

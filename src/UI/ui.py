@@ -147,7 +147,7 @@ class UI():
 
         doi = self.io.read_input("\nEnter DOI:")
         data = self.doi_service.fetch(doi)
-        if not data:
+        if not data or not data.entries:
             self.io.write_screen(
                 "\n[bold red]Invalid DOI, please try again[/bold red]")
             return

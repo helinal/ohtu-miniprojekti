@@ -59,7 +59,8 @@ class UI():
                 self.io.write_screen(self.invalid_message)
 
     def delete_reference(self):
-        self.io.write_screen("\nEnter the citekey of the reference you want to delete:\n ")
+        self.io.write_screen(
+            "\nEnter the citekey of the reference you want to delete:\n ")
         citekey = self.io.read_input('>>> ')
         status = self.app.delete_reference(citekey)
         if status is True:
@@ -106,12 +107,16 @@ class UI():
         opt_attributes = ["volume", "number", "pages", "month", "note"]
         self.app.add_reference(self.add_loop(
             mand_attributes, opt_attributes, "article"), self.add_tags())
+        self.io.write_screen(
+            "\n[bold green]Reference added successfully![bold green]")
 
     def add_book(self):
         mand_attributes = ["author", "editor", "title", "publisher", "year"]
         opt_attributes = ["volume", "number", "pages", "month", "note"]
         self.app.add_reference(self.add_loop(
             mand_attributes, opt_attributes, "book"), self.add_tags())
+        self.io.write_screen(
+            "\n[bold green]Reference added successfully![bold green]")
 
     def add_inproceedings(self):
         mand_attributes = ["author", "title"]
@@ -119,12 +124,16 @@ class UI():
                           "month", "address", "organization", "publisher", "note", "annote"]
         self.app.add_reference(self.add_loop(mand_attributes,
                                              opt_attributes, "inproceedings"), self.add_tags())
+        self.io.write_screen(
+            "\n[bold green]Reference added successfully![bold green]")
 
     def add_phdthesis(self):
         mand_attributes = ["author", "title", "school", "year"]
         opt_attributes = ["type", "address", "month", "note", "annote"]
         self.app.add_reference(self.add_loop(mand_attributes,
                                              opt_attributes, "phdthesis"), self.add_tags())
+        self.io.write_screen(
+            "\n[bold green]Reference added successfully![bold green]")
 
     def add_loop(self, mand_attributes, opt_attributes, reftype):
         bibtex = self.create_bibtex_obj(reftype)
@@ -151,16 +160,21 @@ class UI():
             self.io.write_screen(
                 "\n[bold red]Invalid DOI, please try again[/bold red]")
             return
-        entry_type = data.entries[0]["ENTRYTYPE"]
-        entry_author = data.entries[0]["author"]
-        entry_title = data.entries[0]["title"]
-        entry_year = data.entries[0]["year"]
+        self.create_from_doi_object(data.entries)
+        self.io.write_screen(
+            "\n[bold green]Reference added successfully![bold green]")
+
+    def create_from_doi_object(self, data):
+        entry_type = data[0]["ENTRYTYPE"]
+        entry_author = data[0]["author"]
+        entry_title = data[0]["title"]
+        entry_year = data[0]["year"]
 
         bibtex = Bibtex(entry_type)
         bibtex.add("author", entry_author)
         bibtex.add("title", entry_title)
         bibtex.add("year", entry_year)
-        for entry in data.entries:
+        for entry in data:
             for key, value in entry.items():
                 if key in ("ENTRYTYPE", "author", "title", "year"):
                     continue
@@ -168,8 +182,6 @@ class UI():
 
         tag = self.add_tags()
         self.app.add_reference(bibtex, tag)
-        self.io.write_screen(
-            "\n[bold green]Reference added successfully![bold green]")
 
     def create_bibtex_obj(self, reftype):
         bibtex = Bibtex(reftype)
@@ -224,6 +236,3 @@ class UI():
             self.io.print_readable_form(result)
         else:
             self.io.write_screen("\n[bold red]Tag not found[/bold red]")
-
-        # save = self.io.read_input(
-        #    "Do you want to save references under this tag to file: ")

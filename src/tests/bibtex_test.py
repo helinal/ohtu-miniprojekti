@@ -1,4 +1,5 @@
 from services.bibtex import Bibtex
+from unittest.mock import patch
 import unittest
 
 
@@ -11,6 +12,13 @@ class TestBibtex(unittest.TestCase):
         self.bibtex_instance.bibDict["year"] = 2023
         self.bibtex_instance.create_citekey()
         self.assertEqual(self.bibtex_instance.citekey, "Kalle2023")
+
+    @patch('random.randint')
+    def test_create_citekey_no_year(self, mock_randint):
+        self.bibtex_instance.bibDict["author"] = "Kalle"
+        mock_randint.return_value = 1234
+        self.bibtex_instance.create_citekey()
+        self.assertEqual(self.bibtex_instance.citekey, "Kalle1234")
 
     def test_loop_to_string(self):
         self.bibtex_instance.bibDict = {

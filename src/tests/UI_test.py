@@ -63,7 +63,7 @@ class TestUI(unittest.TestCase):
         expected_output = "[bold red]\nInvalid input, please try again.[/bold red]"
 
         self.assertEqual(self.stub_io.outputs[0], expected_output)
-        self.assertEqual(len(self.stub_io.outputs), 2)
+        self.assertEqual(len(self.stub_io.outputs), 3)
 
     def test_add_book_with_bad_year_and_print_all(self):
         self.stub_io = StubIO(["1", "2", "author", "editor", "title",
@@ -100,4 +100,20 @@ class TestUI(unittest.TestCase):
         self.ui.start()
         expected_output = "\n[bold red]Tag not found[/bold red]"
         print(self.stub_io.outputs)
+        self.assertEqual(expected_output, self.stub_io.outputs[0])
+
+    def test_add_inproceedings(self):
+        self.stub_io = StubIO(["1", "3", "author", "title", "booktitle",
+                              "1998", "", "", "", "", "", "", "", "", "", '', "", "", "7"])
+        self.ui = UI(self.stub_io)
+        self.ui.start()
+        expected_output = "\n[bold green]Reference added successfully![bold green]"
+        self.assertEqual(expected_output, self.stub_io.outputs[0])
+
+    def test_add_phdthesis(self):
+        self.stub_io = StubIO(["1", "4", "author", "title", "school",
+                              "1998", "", "", "", "", "", "", "", "", "", '', "", "", "7"])
+        self.ui = UI(self.stub_io)
+        self.ui.start()
+        expected_output = "\n[bold green]Reference added successfully![bold green]"
         self.assertEqual(expected_output, self.stub_io.outputs[0])

@@ -16,4 +16,4 @@ class File_Saver:
         with open(file_path, 'w', encoding='utf-8') as bib_file:
             bib_file.write(refs_as_string)
 
-        return "\n[bold green]References saved to file. References can be found in src/data/bibtex.bib[/bold green]"# pylint: disable=line-too-long
+        return "\n[bold green]References saved to file. References can be found in src/data/bibtex.bib[/bold green]"  # pylint: disable=line-too-long

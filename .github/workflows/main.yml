@@ -22,6 +22,8 @@ jobs:
         run: poetry install
       - name: Lint with pylint
         run: poetry run pylint src
+      - name: Run robot tests
+        run: poetry run robot src/tests
       - name: Run tests
         run: poetry run coverage run --branch -m pytest
       - name: Coverage report

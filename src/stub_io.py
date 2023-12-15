@@ -14,6 +14,7 @@ class StubIO:
 
     def add_input(self, value):
         self.inputs.append(value)
+        self.outputs.append(value)
 
     def print_readable_form(self, text):
         to_print = ""

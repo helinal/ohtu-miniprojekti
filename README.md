@@ -7,6 +7,27 @@
 ![GHA workflow badge](https://github.com/helinal/ohtu-miniprojekti/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/helinal/ohtu-miniprojekti/graph/badge.svg?token=71GPV9BTFQ)](https://codecov.io/gh/helinal/ohtu-miniprojekti)
 
+### Sprint 4
+
+#### Definition of done
+
+The following user stories are completed according to acceptance criteria:
+
+##### As a user I can delete a reference
+ - Application asks user if they want to delete a reference.
+ - Application deletes the reference from db.
+
+##### As a user I can add tags to references
+ - Application asks user if they want to put all references into a file.
+ - All data goes from db to a .bib file.
+
+##### As a user I can search references
+ - Application asks user if they want to search references with a tag.
+ - Application fetches the references by tag if found.
+
+
+The completion of user stories is verified through extensive unit testing across the program. The user story 'As a user I can add tags to references' is also system tested according to acceptance criteria.
+The program is continuosly integrated. Program releases contain a high unit testing coverage with fully passing unit and system tests.
 
 ### Sprint 3
 

@@ -20,6 +20,8 @@ jobs:
         run: pip install poetry
       - name: Install dependencies
         run: poetry install
+      - name: Build database
+        run: poetry run python3 src/initialize_database.py
       - name: Lint with pylint
         run: poetry run pylint src
       - name: Run robot tests

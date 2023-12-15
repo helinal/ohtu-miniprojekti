@@ -107,7 +107,7 @@ class TestUI(unittest.TestCase):
                               "1998", "", "", "", "", "", "", "", "", "", '', "", "", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
-        expected_output = "\n[bold green]Reference added successfully![bold green]"
+        expected_output = "\n[bold green]Reference added successfully![/bold green]"
         self.assertEqual(expected_output, self.stub_io.outputs[0])
 
     def test_add_phdthesis(self):
@@ -115,5 +115,26 @@ class TestUI(unittest.TestCase):
                               "1998", "", "", "", "", "", "", "", "", "", '', "", "", "7"])
         self.ui = UI(self.stub_io)
         self.ui.start()
-        expected_output = "\n[bold green]Reference added successfully![bold green]"
+        expected_output = "\n[bold green]Reference added successfully![/bold green]"
         self.assertEqual(expected_output, self.stub_io.outputs[0])
+    
+    def test_delete_reference_failed(self):
+        self.stub_io = StubIO(["5", "1", "7"])
+        self.ui = UI(self.stub_io)
+        self.ui.start()
+        expected_output = "\n[bold red]Delete failed[/bold red]"
+        self.assertEqual(expected_output, self.stub_io.outputs[1])
+
+    def test_delete_reference_success(self):
+        self.stub_io = StubIO(["4", "10.1007/s11192-014-1506-1","tag", "5", "Cavacini2014", "7"])
+        self.ui = UI(self.stub_io)
+        self.ui.start()
+        expected_output = "\n[bold green]Deleted[/bold green]"
+        self.assertEqual(expected_output, self.stub_io.outputs[2])
+    
+    def test_save_to_file(self):
+        self.stub_io = StubIO(["1", "1", "author", "title", "journal", "1998", "", "", "", "", "", "", "3", "7"])
+        self.ui = UI(self.stub_io)
+        self.ui.start()
+        expected_output = "\n[bold green]References saved to file. References can be found in src/data/bibtex.bib[/bold green]"
+        self.assertEqual(expected_output, self.stub_io.outputs[1])

@@ -1,13 +1,13 @@
 import unittest
 from unittest.mock import Mock, patch
 # replace with the actual module name
-from services.file_service import File_Saver
+from services.file_service import FileService
 
 
-class TestFileSaver(unittest.TestCase):
+class TestFileService(unittest.TestCase):
     def setUp(self):
         self.mock_bib_repo = Mock()
-        self.file_saver = File_Saver(bib_repo=self.mock_bib_repo)
+        self.file_saver = FileService(bib_repo=self.mock_bib_repo)
 
     @patch('builtins.open', new_callable=unittest.mock.mock_open)
     def test_write(self, mock_open):

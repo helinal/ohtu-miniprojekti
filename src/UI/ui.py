@@ -1,10 +1,10 @@
 from rich.console import Console
 from services.bibtex import Bibtex
 from services.app_logic import AppLogic
-from services.file_service import File_Saver
-from services.doi_service import Doi_Service
-from repositories.bibtex_repository import BibTex_Repository
-from database_connection import get_data_base_connection
+from services.file_service import FileService
+from services.doi_service import DoiService
+from repositories.bibtex_repository import BibTexRepository
+from database_connection import get_database_connection
 
 
 class UI():
@@ -12,11 +12,11 @@ class UI():
         self.io = io
         self.bib_repo = bib_repo
         if not bib_repo:
-            self.bib_repo = BibTex_Repository(get_data_base_connection())
+            self.bib_repo = BibTexRepository(get_database_connection())
         self.app = AppLogic(self.bib_repo)
-        self.file_saver = File_Saver(self.bib_repo)
+        self.file_saver = FileService(self.bib_repo)
         self.invalid_message = "[bold red]\nInvalid input, please try again.[/bold red]"
-        self.doi_service = Doi_Service()
+        self.doi_service = DoiService()
         self.console = Console()
 
     def start(self):

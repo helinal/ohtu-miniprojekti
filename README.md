@@ -1,5 +1,7 @@
 # ohtu-miniprojekti
 
+[Miniprojektin loppuraportti](https://docs.google.com/document/d/1xz-iKR21njZ1ltdNHVUsIpgpU9R3TVARSUKdSApDu8g/edit)
+
 [Product and sprint backlog](https://docs.google.com/spreadsheets/d/1uLXQf_AoPL6ly2yu5XrqHldBCUcM7QaakHexxE-Yq5s/edit#gid=0)
 
 [User manual](https://github.com/helinal/ohtu-miniprojekti/blob/main/documentation/user_manual.md)
